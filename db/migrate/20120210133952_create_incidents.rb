@@ -1,7 +1,7 @@
 class CreateIncidents < ActiveRecord::Migration
   def change
     create_table :incidents do |t|
-      t.int :id_machine_incident
+      t.integer :id_machine_incident
       t.string :date_incident
       t.string :date_resolution_incident
       t.string :statut_incident
