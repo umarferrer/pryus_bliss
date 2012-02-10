@@ -1,0 +1,45 @@
+<%= form_for(@incident) do |f| %>
+  <% if @incident.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@incident.errors.count, "error") %> prohibited this incident from being saved:</h2>
+
+      <ul>
+      <% @incident.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id_machine_incident %><br />
+    <%= f.text_field :id_machine_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :date_incident %><br />
+    <%= f.text_field :date_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :date_resolution_incident %><br />
+    <%= f.text_field :date_resolution_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :statut_incident %><br />
+    <%= f.text_field :statut_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :niveau_incident %><br />
+    <%= f.text_field :niveau_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :description_incident %><br />
+    <%= f.text_field :description_incident %>
+  </div>
+  <div class="field">
+    <%= f.label :proprietes_supplementaires %><br />
+    <%= f.text_field :proprietes_supplementaires %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

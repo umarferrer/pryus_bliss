@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id machine incident:</b>
+  <%= @incident.id_machine_incident %>
+</p>
+
+<p>
+  <b>Date incident:</b>
+  <%= @incident.date_incident %>
+</p>
+
+<p>
+  <b>Date resolution incident:</b>
+  <%= @incident.date_resolution_incident %>
+</p>
+
+<p>
+  <b>Statut incident:</b>
+  <%= @incident.statut_incident %>
+</p>
+
+<p>
+  <b>Niveau incident:</b>
+  <%= @incident.niveau_incident %>
+</p>
+
+<p>
+  <b>Description incident:</b>
+  <%= @incident.description_incident %>
+</p>
+
+<p>
+  <b>Proprietes supplementaires:</b>
+  <%= @incident.proprietes_supplementaires %>
+</p>
+
+
+<%= link_to 'Edit', edit_incident_path(@incident) %> |
+<%= link_to 'Back', incidents_path %>

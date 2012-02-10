@@ -1,4 +1,6 @@
 PryusBliss::Application.routes.draw do
+  resources :incidents
+
   resources :administrateurs
 
   resources :machines

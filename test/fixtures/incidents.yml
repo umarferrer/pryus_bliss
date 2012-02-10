@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_machine_incident: 
+  date_incident: MyString
+  date_resolution_incident: MyString
+  statut_incident: MyString
+  niveau_incident: MyString
+  description_incident: MyString
+  proprietes_supplementaires: MyString
+
+two:
+  id_machine_incident: 
+  date_incident: MyString
+  date_resolution_incident: MyString
+  statut_incident: MyString
+  niveau_incident: MyString
+  description_incident: MyString
+  proprietes_supplementaires: MyString
