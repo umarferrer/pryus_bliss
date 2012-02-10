@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nom_salle: MyString
+  ip_reseau: MyString
+  masque_reseau: MyString
+  nbre_machine: 
+
+two:
+  nom_salle: MyString
+  ip_reseau: MyString
+  masque_reseau: MyString
+  nbre_machine: 

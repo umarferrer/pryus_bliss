@@ -1,0 +1,29 @@
+<h1>Listing salles</h1>
+
+<table>
+  <tr>
+    <th>Nom salle</th>
+    <th>Ip reseau</th>
+    <th>Masque reseau</th>
+    <th>Nbre machine</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @salles.each do |salle| %>
+  <tr>
+    <td><%= salle.nom_salle %></td>
+    <td><%= salle.ip_reseau %></td>
+    <td><%= salle.masque_reseau %></td>
+    <td><%= salle.nbre_machine %></td>
+    <td><%= link_to 'Show', salle %></td>
+    <td><%= link_to 'Edit', edit_salle_path(salle) %></td>
+    <td><%= link_to 'Destroy', salle, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Salle', new_salle_path %>

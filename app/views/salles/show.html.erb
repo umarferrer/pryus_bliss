@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom salle:</b>
+  <%= @salle.nom_salle %>
+</p>
+
+<p>
+  <b>Ip reseau:</b>
+  <%= @salle.ip_reseau %>
+</p>
+
+<p>
+  <b>Masque reseau:</b>
+  <%= @salle.masque_reseau %>
+</p>
+
+<p>
+  <b>Nbre machine:</b>
+  <%= @salle.nbre_machine %>
+</p>
+
+
+<%= link_to 'Edit', edit_salle_path(@salle) %> |
+<%= link_to 'Back', salles_path %>
