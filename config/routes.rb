@@ -1,4 +1,6 @@
 PryusBliss::Application.routes.draw do
+  resources :administrateurs
+
   resources :machines
 
   resources :salles
