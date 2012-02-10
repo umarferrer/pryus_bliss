@@ -1,4 +1,6 @@
 PryusBliss::Application.routes.draw do
+  resources :machines
+
   resources :salles
 
   # The priority is based upon order of creation:

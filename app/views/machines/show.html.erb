@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom machine:</b>
+  <%= @machine.nom_machine %>
+</p>
+
+<p>
+  <b>Ip machine:</b>
+  <%= @machine.ip_machine %>
+</p>
+
+<p>
+  <b>Id salle machine:</b>
+  <%= @machine.id_salle_machine %>
+</p>
+
+<p>
+  <b>Description machine:</b>
+  <%= @machine.description_machine %>
+</p>
+
+<p>
+  <b>Date crea machine:</b>
+  <%= @machine.date_crea_machine %>
+</p>
+
+<p>
+  <b>Etat machine:</b>
+  <%= @machine.etat_machine %>
+</p>
+
+<p>
+  <b>Etat service machine:</b>
+  <%= @machine.etat_service_machine %>
+</p>
+
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

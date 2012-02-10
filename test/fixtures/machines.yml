@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nom_machine: MyString
+  ip_machine: MyString
+  id_salle_machine: 
+  description_machine: MyString
+  date_crea_machine: MyString
+  etat_machine: MyString
+  etat_service_machine: MyString
+
+two:
+  nom_machine: MyString
+  ip_machine: MyString
+  id_salle_machine: 
+  description_machine: MyString
+  date_crea_machine: MyString
+  etat_machine: MyString
+  etat_service_machine: MyString

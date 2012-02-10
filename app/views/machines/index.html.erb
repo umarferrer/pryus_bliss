@@ -1,0 +1,35 @@
+<h1>Listing machines</h1>
+
+<table>
+  <tr>
+    <th>Nom machine</th>
+    <th>Ip machine</th>
+    <th>Id salle machine</th>
+    <th>Description machine</th>
+    <th>Date crea machine</th>
+    <th>Etat machine</th>
+    <th>Etat service machine</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @machines.each do |machine| %>
+  <tr>
+    <td><%= machine.nom_machine %></td>
+    <td><%= machine.ip_machine %></td>
+    <td><%= machine.id_salle_machine %></td>
+    <td><%= machine.description_machine %></td>
+    <td><%= machine.date_crea_machine %></td>
+    <td><%= machine.etat_machine %></td>
+    <td><%= machine.etat_service_machine %></td>
+    <td><%= link_to 'Show', machine %></td>
+    <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
+    <td><%= link_to 'Destroy', machine, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Machine', new_machine_path %>
