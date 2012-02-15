@@ -1,4 +1,11 @@
 PryusBliss::Application.routes.draw do
+
+
+  get "pages/machine_historique"
+
+
+  root :to => 'pages#index'
+
   resources :incidents
 
   resources :administrateurs
