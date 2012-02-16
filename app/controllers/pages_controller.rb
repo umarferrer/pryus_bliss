@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
-  def index
-  end
 
-  def machine_historique
-  end
+	def index
+		@titre="Index"
+	end
+
+	def machine_historique
+
+	end
 
 end

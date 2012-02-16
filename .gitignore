@@ -1,5 +1,8 @@
 .bundle
+<<<<<<< HEAD
 
+=======
+>>>>>>> session
 log/*.log
 tmp/
 .sass-cache/
