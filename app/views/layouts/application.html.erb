@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PryusBliss</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
+	<head>
 
-</body>
+		<title><%= titre %></title>
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>	
+
+	</head>
+
+	<body>
+
+	<%= render 'layouts/header' %>
+	<%= yield %>
+
+	</body>
 </html>
