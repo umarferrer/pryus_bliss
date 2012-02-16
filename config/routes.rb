@@ -1,18 +1,19 @@
 PryusBliss::Application.routes.draw do
 
 
+
+  get "sessions/new"
+
   get "pages/machine_historique"
 
 
   root :to => 'pages#index'
 
   resources :incidents
-
   resources :administrateurs
-
   resources :machines
-
   resources :salles
+  resources :sessions, :only => [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

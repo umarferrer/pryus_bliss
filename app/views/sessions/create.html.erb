@@ -1,0 +1,25 @@
+<div id="connexion" >
+	
+	<%= form_for(:sessions, :url => sessions_path) do |f| %>
+		
+		<div>
+			<%= f.label :login_mail, "Login" %>
+			<%= f.text_field :login_mail %>
+		</div>
+
+		<div>
+			<%= f.label :hached_password, "Password" %>
+			<%= f.password_field :hached_password %>
+		</div>
+
+		<div>
+			<%= f.submit "S'identifier" %>
+		</div>
+
+		<div>
+			<%= link_to "Mot de passe oublié ?", '#' %>
+		</div>
+
+	<% end %>
+
+</div>

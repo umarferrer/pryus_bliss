@@ -10,6 +10,20 @@
 
 $(document).ready(function() {
 
-	//	$( "#dialog" ).dialog();
+	$( "#li_connexion" ).hover(function() {
+				$( "#connexion" ).dialog( "open" );
+			});
+/*	$( "body" ).hover(function() {
+				$( "#connexion" ).dialog( "close" );
+			});
+	*/		
+
+	$( "#connexion" ).dialog({
+		autoOpen: false,
+		draggable:false,
+		resizable:false,
+		title:"Identification"
+
+	});
 
 })
