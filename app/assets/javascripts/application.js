@@ -10,7 +10,7 @@
 
 $(document).ready(function() {
 
-	$( "#li_connexion" ).hover(function() {
+	$( "#li_connexion" ).click(function() {
 				$( "#connexion" ).dialog( "open" );
 			});
 /*	$( "body" ).hover(function() {
