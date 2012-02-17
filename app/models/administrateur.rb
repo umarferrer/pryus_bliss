@@ -28,6 +28,14 @@ class Administrateur < ActiveRecord::Base
 		end
 	end
 
+	def self.authenticate_with_salt(id, cookie_salt)
+			user = find_by_id(id)
+			if !user.nil? and ( user.salt == cookie_salt )
+				return user
+			else
+				return nil
+			end
+	end
 
 	private
 

@@ -15,6 +15,8 @@ PryusBliss::Application.routes.draw do
   resources :salles
   resources :sessions, :only => [:new, :create, :destroy]
 
+  match '/signout',  :to => 'sessions#destroy'
+
 
 
   # The priority is based upon order of creation:

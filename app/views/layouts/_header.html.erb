@@ -1,10 +1,17 @@
 <%= link_to logo, root_path %>
 
-<ul>
-	<li id="li_connexion" ><%= link_to "Connexion", "#" %></li>
-	<li><%= link_to "inscription", "#" %></li>
-</ul>
-
+<% if signed_in? %>
+	<ul>
+		<li><%= link_to "Mon profile", "#" %></li>
+		<li><%= link_to "Administration", "#" %></li>
+		<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
+	</ul>
+<% else %>
+	<ul>
+		<li id="li_connexion" ><%= link_to "Connexion", "#" %></li>
+		<li><%= link_to "inscription", "#" %></li>
+	</ul>
+<% end %>
 
 <div id="connexion" >
 	
