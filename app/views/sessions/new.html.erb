@@ -1,25 +1,30 @@
-<div >
+<div id="div_connexion" >
 	
 	<%= form_for(:sessions, :url => sessions_path) do |f| %>
-		
-		<div>
-			<%= f.label :login_mail, "Login" %>
-			<%= f.text_field :login_mail %>
-		</div>
-
-		<div>
-			<%= f.label :password, "Password" %>
-			<%= f.password_field :password %>
-		</div>
-
-		<div>
-			<%= f.submit "S'identifier" %>
-		</div>
-
-		<div>
-			<%= link_to "Mot de passe oublié ?", '#' %>
-		</div>
-
+		<table class="margin_auto" >		
+			<tr>
+				<td>
+						<%= f.label :login_mail, "Login :" %><br />
+						<%= f.text_field :login_mail %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+						<%= f.label :password, "Password :" %><br />
+						<%= f.password_field :password %>
+				</td>
+			</tr>
+			<tr>
+				<td class="right" >
+						<%= link_to raw("Mot de passe oublié ?"), '#', :class => "oublie_mdp" %>
+				</td>
+			</tr>
+			<tr>
+				<td class="center" >
+						<%= f.submit "S'identifier" %>
+				</td>
+			</tr>
+		</table>
 	<% end %>
 
 </div>

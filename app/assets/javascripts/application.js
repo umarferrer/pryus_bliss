@@ -13,17 +13,13 @@ $(document).ready(function() {
 	$( "#li_connexion" ).click(function() {
 				$( "#connexion" ).dialog( "open" );
 			});
-/*	$( "body" ).hover(function() {
-				$( "#connexion" ).dialog( "close" );
-			});
-	*/		
 
 	$( "#connexion" ).dialog({
 		autoOpen: false,
 		draggable:false,
 		resizable:false,
-		title:"Identification"
-
+		title:"Identification",
+		width :265,
 	});
 
 })

@@ -15,6 +15,10 @@ a:hover {
 	background-color:inherit;
 	text-decoration:underline;
 }
+a:visited {
+	color:red;
+	text-decoration:none;
+}
 .gray {
 	color:gray;
 }
@@ -63,7 +67,7 @@ a:hover {
 	font-size:13px;
 	text-decoration:none;
 	color:#fff;
-	background:url(menu_enactive.gif) no-repeat bottom center;
+	background:url(menu_enactive.png) no-repeat bottom center;
 	padding:8px 10px;
 	width:118px;
 	text-align:center;
@@ -108,4 +112,32 @@ a:hover {
 	margin:0 auto;
 	padding:0;
 	width:780px;
+}
+.oublie_mdp {
+	font-size:10px;	
+}
+.right {
+	text-align:right;
+}
+.center {
+	text-align:center;
+}
+.margin_auto{
+	margin:auto;
+}
+#connexion {
+	display:none;
+}
+#div_connexion {
+	width: 300px; 
+	margin: auto; 
+	border: 1px solid; 
+	padding: 20px;
+}
+#flash {
+	padding-left: 0px;
+}
+.error{
+	color: red;
+	text-align: center;
 }
