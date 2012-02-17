@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210133952) do
+ActiveRecord::Schema.define(:version => 20120217135724) do
 
   create_table "administrateurs", :force => true do |t|
     t.string   "nom_admin"
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(:version => 20120210133952) do
     t.string   "etat_service_machine"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "ping", :force => true do |t|
+    t.integer "id_machine"
+    t.string  "delay"
   end
 
   create_table "salles", :force => true do |t|

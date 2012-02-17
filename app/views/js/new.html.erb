@@ -1,0 +1,18 @@
+<div id="grid" style="width:600px; height:400px;"></div>
+        <script type="text/javascript" charset="utf-8">
+            var grid = new dhtmlXGridObject("grid");
+			grid.setImagePath("../assets/dhtmlx/imgs/");
+            grid.setHeader("Rank, Firstname,Lastname,Pass");
+            grid.setColSorting("str,str,str,str");  //added !
+            grid.setColTypes("ed,ed,ed,pass");
+			grid.setInitWidths("100,100,100,100");
+            grid.setSkin("dhx_skyblue");
+			grid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter");
+			grid.enableMultiselect(true);
+            grid.init();
+			grid.load("/js/data.xml");
+		    dp = new dataProcessor("/js/dbaction.xml");
+            dp.init(grid);
+        </script>
+<input type="button" value="Add" onclick="grid.addRow(grid.uid(),'new user')">
+<input type="button" value="Delete" onclick="grid.deleteSelectedRows()">

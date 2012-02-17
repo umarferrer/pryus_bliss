@@ -14,7 +14,14 @@ PryusBliss::Application.routes.draw do
   resources :machines
   resources :salles
   resources :sessions, :only => [:new, :create, :destroy]
-
+  resource :js do
+    collection do
+      get 'view'
+      get 'data'
+      get 'dbaction'
+	  get 'chart'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

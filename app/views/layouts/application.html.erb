@@ -2,18 +2,24 @@
 <html>
 
 	<head>
-
 		<title><%= titre %></title>
 		<%= csrf_meta_tags %>
 		<%= stylesheet_link_tag    "application" %>
 		<%= javascript_include_tag "application" %>	
-
+		<%= javascript_include_tag 'dhtmlx/dhtmlxcommon.js' %>
+        <%= javascript_include_tag 'dhtmlx/dhtmlxgrid.js' %>
+        <%= javascript_include_tag 'dhtmlx/dhtmlxgridcell.js' %>
+        <%= javascript_include_tag 'dhtmlx/dhtmlxdataprocessor.js' %>
+		<%= javascript_include_tag 'dhtmlx/dhtmlxgrid_filter.js' %>
+		<%= javascript_include_tag 'dhtmlx/dhtmlxchart.js' %>
+		<%= stylesheet_link_tag 'dhtmlx/dhtmlxchart.css' %>
+        <%= stylesheet_link_tag 'dhtmlx/dhtmlxgrid.css' %>
+        <%= stylesheet_link_tag 'dhtmlx/skins/dhtmlxgrid_dhx_skyblue.css' %>
 		<%= javascript_include_tag "jquery-1.7.1.min" %>
 		<%= javascript_include_tag "jquery-ui-1.8.17.custom.min" %>
 		<%= stylesheet_link_tag "smoothness/jquery-ui-1.8.17.custom" %>
-
 		<%= stylesheet_link_tag "custom" %>
-		
+		<%= csrf_meta_tags %>
 	</head>
 
 	<body>
