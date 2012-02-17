@@ -15,6 +15,8 @@ PryusBliss::Application.routes.draw do
   resources :salles
   resources :sessions, :only => [:new, :create, :destroy]
 
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
