@@ -1,19 +1,29 @@
-<%= link_to logo, root_path %>
+<div id="header">
 
-<% if signed_in? %>
-	<ul>
-		<li><%= link_to "Mon profile", "#" %></li>
-		<li><%= link_to "Administration", "#" %></li>
-		<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
-	</ul>
-<% else %>
-	<ul>
-		<li id="li_connexion" ><%= link_to "Connexion", "#" %></li>
-		<li><%= link_to "inscription", "#" %></li>
-	</ul>
-<% end %>
+	<div id="logo">
+		<%= link_to raw("<span class='black'>PRYUS</span> (Bliss)") , root_path %>
+	</div>
 
-<div id="connexion" >
+	<% if signed_in? %>
+		<div id="menu">
+			<ul>
+				<li><%= link_to "Mon profile", "#" %></li>
+				<li><%= link_to "Gestion", "#" %></li>
+				<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
+			</ul>
+		</div>
+	<% else %>
+		<div id="menu">
+			<ul>
+				<li id="li_connexion" ><%= link_to "Connexion", "#" %></li>
+				<li><%= link_to "inscription", "#" %></li>
+			</ul>
+		</div>
+	<% end %>
+
+</div>
+
+<div style="display:none" id="connexion" >
 	
 	<%= form_for(:sessions, :url => sessions_path) do |f| %>
 		
