@@ -9,7 +9,12 @@ gem 'rails', '3.1.1'
 gem 'mail'
 gem 'heroku'
 gem 'sqlite3'
-gem 'ruby-pg'
+
+group :production do
+	 gem 'therubyracer-heroku'
+	 gem 'ruby-pg'
+end
+
 
 
 # Gems used only for assets and not required
