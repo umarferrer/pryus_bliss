@@ -30,7 +30,7 @@ class AdministrateursController < ApplicationController
 
 end
 
-#mail.deliver!
+mail.deliver!
 
 
 
