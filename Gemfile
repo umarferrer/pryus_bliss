@@ -8,7 +8,8 @@ gem 'rails', '3.1.1'
 
 gem 'mail'
 gem 'heroku'
-gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+gem 'sqlite3'
+gem 'postgres-pr'
 
 
 # Gems used only for assets and not required
