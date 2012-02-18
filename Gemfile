@@ -9,7 +9,7 @@ gem 'rails', '3.1.1'
 gem 'mail'
 gem 'heroku'
 gem 'sqlite3'
-gem 'postgres-pr'
+gem 'ruby-pg'
 
 
 # Gems used only for assets and not required
