@@ -1,6 +1,68 @@
+require 'mail'
 class AdministrateursController < ApplicationController
   # GET /administrateurs
   # GET /administrateurs.json
+
+
+  def send_password
+    @titre="Password recovery"
+  end
+
+  def forgot_password
+    user = Administrateur.find_by_login_mail(params[:email])
+	
+	if (user) 
+
+		user.reset_password_code_until = 1.day.from_now
+		user.reset_password_code =  Digest::SHA1.hexdigest( "#{user.login_mail}--#{Time.now.utc}" )
+		user.save!
+	#	mail=Notifier.welcome().deliver
+
+
+
+
+
+  mail = Mail.new do
+  from 'ferrer.umar@gmail.com'
+  to 'assatoc@gmail.com'
+  subject  'Here is the image you wanted'
+  body     "hey"#File.read('body.txt')
+
+end
+
+mail.deliver!
+
+
+
+
+
+
+
+
+
+
+
+
+		flash[:succes] = "Ok"
+		redirect_to root_path
+	else
+		flash[:error] = "Ok"
+		redirect_to root_path
+	end 
+
+  end
+
+	def reset_password
+		user = Administrateur.find_by_reset_password_code(params[:reset_code])
+		if user &&  user.reset_password_code_until  && Time.now < user.reset_password_code_until 
+      cookies.permanent.signed[:remember_token] = [user.id, user.salt]
+      self.current_user = user 
+    end
+		redirect_to root_path
+	end
+ 
+ 
+ 
   def index
     @administrateurs = Administrateur.all
 
