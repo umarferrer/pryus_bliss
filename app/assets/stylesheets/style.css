@@ -104,11 +104,11 @@ a:visited {
 						
 **************************************************** */
 #forgot_password_div {
-	width: 200px;
+	width: 270px;
 	margin:auto;
 	padding: 20px; 
 	border:1px solid;
-	margin-top:150px;
+	margin-top:100px;
 	margin-bottom:100px;
 }
 
@@ -119,10 +119,10 @@ a:visited {
 **************************************************** */
 #change_password_request_div {
 	margin:auto;
-	width: 320px; 
+	width: 340px; 
 	padding: 20px; 
 	border: 1px solid;
-	margin-top:150px;
+	margin-top:100px;
 	margin-bottom:100px;
 }
 
@@ -133,7 +133,6 @@ a:visited {
 **************************************************** */
 #erreur_messages{
 	text-align:center;
-	margin-bottom:-100px;
 	margin-top:50px;
 }
 #erreur_messages span{
@@ -177,22 +176,21 @@ a:visited {
 	margin: auto; 
 	border: 1px solid; 
 	padding: 20px;
+	margin-top:100px;
+	margin-bottom:100px;
 }
 .error{
 	color: red;
 	text-align: center;
-	margin-bottom:-100px;
-	margin-top:50px;
+	margin-top:20px;
 }
 .succes{
 	color: green;
 	text-align: center;
-	margin-bottom:-100px;
-	margin-top:50px;
+	margin-top:20px;
 }
 .noti{
 	color: orange;
 	text-align: center;
-	margin-bottom:-100px;
-	margin-top:50px;
+	margin-top:20px;
 }

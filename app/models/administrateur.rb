@@ -45,7 +45,9 @@ class Administrateur < ActiveRecord::Base
 
 		def encrypt_password
 			self.salt=make_salt if new_record?
-			self.hached_password = encrypt(password)
+				if !password.nil?
+					self.hached_password = encrypt(password) 
+				end
 		end
 
 		def encrypt(string)

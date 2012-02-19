@@ -19,6 +19,7 @@ PryusBliss::Application.routes.draw do
   match '/change_password_process', :to => 'administrateurs#change_password_process'
   
   match '/signout',  :to => 'sessions#destroy'
+  match '/signin',  :to => 'sessions#new'
 
 
 
