@@ -11,5 +11,7 @@ class CreateMachines < ActiveRecord::Migration
 
       t.timestamps
     end
+	add_index :machine, :salle_id
   end
+  
 end

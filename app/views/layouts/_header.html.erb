@@ -1,3 +1,5 @@
+<% session[:pwd] = request.fullpath %>
+
 <div id="header">
 
 	<div id="logo">
@@ -41,7 +43,7 @@
 			</tr>
 			<tr>
 				<td class="right" >
-						<%= link_to raw("Mot de passe oublié ?"), forgot_password_path, :class => "oublie_mdp" %>
+						<%= link_to raw("Mot de passe oublié ?"), '#', :class => "oublie_mdp" %>
 				</td>
 			</tr>
 			<tr>

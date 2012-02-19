@@ -100,49 +100,6 @@ a:visited {
 
 /* ****************************************************
 
-			administrateur/forgot_password.html
-						
-**************************************************** */
-#forgot_password_div {
-	width: 280px;
-	margin:auto;
-	padding: 20px; 
-	border:1px solid;
-	margin-top:100px;
-	margin-bottom:100px;
-}
-
-/* ****************************************************
-
-			administrateur/change_password_request.html
-						
-**************************************************** */
-#change_password_request_div {
-	margin:auto;
-	width: 340px; 
-	padding: 20px; 
-	border: 1px solid;
-	margin-top:100px;
-	margin-bottom:100px;
-}
-
-/* ****************************************************
-
-			shared/_error_messages.html
-						
-**************************************************** */
-#erreur_messages{
-	text-align:center;
-	margin-top:50px;
-}
-#erreur_messages span{
-	color:red;
-	font-size:12px;
-	font-style:italic;
-}
-
-/* ****************************************************
-
 						Body 
 						
 **************************************************** */
@@ -176,21 +133,11 @@ a:visited {
 	margin: auto; 
 	border: 1px solid; 
 	padding: 20px;
-	margin-top:100px;
-	margin-bottom:100px;
+}
+#flash {
+	padding-left: 0px;
 }
 .error{
 	color: red;
 	text-align: center;
-	margin-top:20px;
-}
-.succes{
-	color: green;
-	text-align: center;
-	margin-top:20px;
-}
-.noti{
-	color: orange;
-	text-align: center;
-	margin-top:20px;
 }
