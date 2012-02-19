@@ -108,7 +108,7 @@ a:visited {
 	margin:auto;
 	padding: 20px; 
 	border:1px solid;
-	margin-top:100px;
+	margin-top:150px;
 	margin-bottom:100px;
 }
 
@@ -122,8 +122,24 @@ a:visited {
 	width: 320px; 
 	padding: 20px; 
 	border: 1px solid;
-	margin-top:100px;
+	margin-top:150px;
 	margin-bottom:100px;
+}
+
+/* ****************************************************
+
+			shared/_error_messages.html
+						
+**************************************************** */
+#erreur_messages{
+	text-align:center;
+	margin-bottom:-100px;
+	margin-top:50px;
+}
+#erreur_messages span{
+	color:red;
+	font-size:12px;
+	font-style:italic;
 }
 
 /* ****************************************************
@@ -165,12 +181,18 @@ a:visited {
 .error{
 	color: red;
 	text-align: center;
+	margin-bottom:-100px;
+	margin-top:50px;
 }
 .succes{
 	color: green;
 	text-align: center;
+	margin-bottom:-100px;
+	margin-top:50px;
 }
 .noti{
 	color: orange;
 	text-align: center;
+	margin-bottom:-100px;
+	margin-top:50px;
 }

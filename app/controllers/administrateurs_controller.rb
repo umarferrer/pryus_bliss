@@ -1,4 +1,3 @@
-require 'mail'
 class AdministrateursController < ApplicationController
   # GET /administrateurs
   # GET /administrateurs.json
@@ -17,8 +16,8 @@ class AdministrateursController < ApplicationController
 		if (user) 
 
 			user.reset_password_code_until = 1.day.from_now
-			user.reset_password_code =  Digest::SHA1.hexdigest( "#{user.login_mail}--#{Time.now.utc}" )
-			user.save!
+			user.reset_password_code =  Digest::SHA2.hexdigest( "#{user.login_mail}--#{Time.now.utc}" )
+			user.save
 			Notifier.send_token(Administrateur.first).deliver
 			flash[:noti] = "Un mail vous a ete envoye. Il contient un lien que vous devrez visiter pour que votre mot de passe soit change"
 			redirect_to root_path
@@ -35,13 +34,11 @@ class AdministrateursController < ApplicationController
 	end
 
 	def change_password_request
-
 		user = Administrateur.find_by_reset_password_code(params[:reset_code])
 
 		if user &&  user.reset_password_code_until  && Time.now < user.reset_password_code_until 
-
-			cookies.permanent.signed[:remember_token] = [user.id, user.salt]
-			self.current_user = user 
+			@erreurs= user
+			sign_in(user)
 			@titre="Change password request"			
 
 		else
@@ -52,10 +49,35 @@ class AdministrateursController < ApplicationController
 		end
 
 	end
-
+	#connecte?
 	def change_password_process
 
-		@user=current_user		
+		user = Administrateur.find_by_reset_password_code(params[:changes][:token])
+
+		if user && current_user?(user) && Time.now < user.reset_password_code_until 
+
+			if user.update_attributes(:password => params[:changes][:password],:password_confirmation => params[:changes][:password_confirmation] )
+
+				flash[:succes] = "Password changed !"
+				user.reset_password_code=nil
+				user.reset_password_code_until=nil
+				user.save!
+				redirect_to root_path
+
+			else
+				
+				@titre="Change password request"	
+				@erreurs= user
+				params[:reset_code]=params[:changes][:token]
+				render 'change_password_request'
+
+			end		
+		else
+		
+			flash[:error] = "Il n'y a pas de demande de changement de mot de passe avec ces parametres"
+			redirect_to root_path
+
+		end	
 
 	end
 
