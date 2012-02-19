@@ -8,13 +8,7 @@ def view
 	def secure_hach(string)
 		Digest::SHA2.hexdigest(string)
 	end
-	def ping
-		@ping = Ping.all
-	end
-	def chart
-        #@events = Events.all()
-    end
-    def dbaction
+	def dbaction
         #called for all db actions
 		nom_admin = params["c0"]
         prenom_admin = params["c1"]

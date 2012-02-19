@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217135724) do
+ActiveRecord::Schema.define(:version => 20120219201854) do
 
   create_table "administrateurs", :force => true do |t|
     t.string   "nom_admin"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(:version => 20120217135724) do
     t.string   "login_mail"
     t.string   "hached_password"
     t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "charts", :force => true do |t|
+    t.integer  "idmachine"
+    t.string   "delay"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -19,6 +19,10 @@ PryusBliss::Application.routes.draw do
       get 'view'
       get 'data'
       get 'dbaction'
+    end
+  end
+   resource :charts do
+    collection do
 	  get 'chart'
     end
   end

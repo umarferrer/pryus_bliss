@@ -1,0 +1,32 @@
+	<script>
+	
+	window.onload = function(){
+	var chart1 =  new dhtmlXChart({
+		view:"line",
+		container:"chart1",
+	    value:"#delay#",
+		label:"#delay#",
+		tooltip:{
+			template:"#delay#"
+		},
+		item:{
+			radius:0,
+			borderColor: "#ffffff",
+			color: "#000000"
+		},
+		line:{
+			color:"#000FFF",
+			width:3
+		},
+		yAxis:{
+			title:"Ping(ms)"
+		},
+		xAxis:{
+			title:"Nb_echantillon",
+			template:"#nb#"
+		}
+	})
+	chart1.load("/charts/chart.xml","xml");
+	}
+	</script>
+	<div id="chart1" style="width:450px;height:300px;border:1px solid #A4BED4;"></div>
