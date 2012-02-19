@@ -17,28 +17,9 @@ module SessionsHelper
 		@current_user ||= user_from_remember_token
 	end
 
-	def current_user?(user)
-		user == current_user
-	end
-
 	def sign_out
 		cookies.delete(:remember_token)
 		self.current_user=nil
-	end
-
-	def authenticate
-		deny_access unless signed_in?
-	end
-
-	def deny_access
-		create_pwd
-		flash[:succes]="Identifier vous !"
-		redirect_to signin_path
-	end
-
-	def redirect_to_pwd
-		redirect_to(session[:pwd] || root_path )
-		clear_pwd
 	end
 
 	private
@@ -49,13 +30,5 @@ module SessionsHelper
 
 		def remember_token
 			cookies.signed[:remember_token] || [nil, nil]
-		end
-
-		def create_pwd
-			session[:pwd] = request.fullpath
-		end
-
-		def clear_pwd
-			session[:pwd] = nil
 		end
 end

@@ -1,0 +1,26 @@
+development:
+  adapter: mysql
+  host: 88.178.232.58
+  port: 80
+  user : ruby
+  password : ruby
+  database: bliss_dev
+
+# LE PORT 80 est fait pour traverser le proxy!
+test:
+  adapter: mysql
+  host: 88.178.232.58
+  port: 80 
+  user : ruby
+  password : ruby
+  database: bliss_preprod
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: mysql
+  host: 88.178.232.58
+  port: 80
+  user : ruby
+  password : ruby
+  database: bliss_prod

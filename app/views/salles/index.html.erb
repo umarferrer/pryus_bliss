@@ -1,11 +1,13 @@
-<h1>Listing salles</h1>
+<fieldset><legend><h1>Listes des  salles</h1></legend>
 
-<table>
+<% if @Salles.blank? %>
+  
+<table border = 1>
   <tr>
-    <th>Nom salle</th>
-    <th>Ip reseau</th>
-    <th>Masque reseau</th>
-    <th>Nbre machine</th>
+    <th>Nom salle </th>
+    <th>Ip reseau </th>
+    <th>Masque reseau </th>
+    <th>Nbre machine </th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,15 +17,19 @@
   <tr>
     <td><%= salle.nom_salle %></td>
     <td><%= salle.ip_reseau %></td>
-    <td><%= salle.masque_reseau %></td>
-    <td><%= salle.nbre_machine %></td>
+    <td><%= salle.masque_reseau  %></td>
+    <td><%= nbremachine(1) %></td>
     <td><%= link_to 'Show', salle %></td>
     <td><%= link_to 'Edit', edit_salle_path(salle) %></td>
     <td><%= link_to 'Destroy', salle, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+<%  else %>
 
+<p> Vous n'avez pas encore créer de salle machine</p>
+<% end %>
 <br />
 
-<%= link_to 'New Salle', new_salle_path %>
+<p><h2><%= link_to 'Créer une Salle', new_salle_path %></h2></p>
+</fieldset>

@@ -12,6 +12,7 @@
 		<%= javascript_include_tag "jquery-ui-1.8.17.custom.min" %>
 		<%= stylesheet_link_tag "smoothness/jquery-ui-1.8.17.custom" %>
 
+		<%= stylesheet_link_tag "custom" %>
 		<%= stylesheet_link_tag "style" %>
 
 		
@@ -25,12 +26,11 @@
 
 			<div id="content">
 
-				<div id="flash">
+				<div>
 					<% flash.each do |key, value| %>
-						<p class="<%= key %>"><%= value %></p>
+						<div class="flash <%= key %>"><%= value %></div>
 					<% end %>
 				</div>
-			
 				
 				<%= yield %>
 

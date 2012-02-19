@@ -15,10 +15,6 @@ a:hover {
 	background-color:inherit;
 	text-decoration:underline;
 }
-a:visited {
-	color:red;
-	text-decoration:none;
-}
 .gray {
 	color:gray;
 }
@@ -67,7 +63,7 @@ a:visited {
 	font-size:13px;
 	text-decoration:none;
 	color:#fff;
-	background:url(menu_enactive.png) no-repeat bottom center;
+	background:url(menu_enactive.gif) no-repeat bottom center;
 	padding:8px 10px;
 	width:118px;
 	text-align:center;
@@ -100,49 +96,6 @@ a:visited {
 
 /* ****************************************************
 
-			administrateur/forgot_password.html
-						
-**************************************************** */
-#forgot_password_div {
-	width: 280px;
-	margin:auto;
-	padding: 20px; 
-	border:1px solid;
-	margin-top:100px;
-	margin-bottom:100px;
-}
-
-/* ****************************************************
-
-			administrateur/change_password_request.html
-						
-**************************************************** */
-#change_password_request_div {
-	margin:auto;
-	width: 340px; 
-	padding: 20px; 
-	border: 1px solid;
-	margin-top:100px;
-	margin-bottom:100px;
-}
-
-/* ****************************************************
-
-			shared/_error_messages.html
-						
-**************************************************** */
-#erreur_messages{
-	text-align:center;
-	margin-top:50px;
-}
-#erreur_messages span{
-	color:red;
-	font-size:12px;
-	font-style:italic;
-}
-
-/* ****************************************************
-
 						Body 
 						
 **************************************************** */
@@ -155,42 +108,4 @@ a:visited {
 	margin:0 auto;
 	padding:0;
 	width:780px;
-}
-.oublie_mdp {
-	font-size:10px;	
-}
-.right {
-	text-align:right;
-}
-.center {
-	text-align:center;
-}
-.margin_auto{
-	margin:auto;
-}
-#connexion {
-	display:none;
-}
-#div_connexion {
-	width: 300px; 
-	margin: auto; 
-	border: 1px solid; 
-	padding: 20px;
-	margin-top:100px;
-	margin-bottom:100px;
-}
-.error{
-	color: red;
-	text-align: center;
-	margin-top:20px;
-}
-.succes{
-	color: green;
-	text-align: center;
-	margin-top:20px;
-}
-.noti{
-	color: orange;
-	text-align: center;
-	margin-top:20px;
 }

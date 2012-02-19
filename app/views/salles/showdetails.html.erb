@@ -1,11 +1,9 @@
-<fieldset>
-<legend>
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Nom salle:</b>
   <%= @salle.nom_salle %>
-</p></legend>
+</p>
 
 <p>
   <b>Ip reseau:</b>
@@ -18,27 +16,16 @@
 </p>
 
 <p>
-  <b>Nbre machine:</b><%= nbremachine(1) %>
+  <b>Nbre machine:</b>
   <%= @salle.nbre_machine %>
 </p>
-
-
-<% if @machines.blank? %>
-  <b>la salle de machine est vide</b>
-</p>
-<% else %>
-<table>
-<tr>
 <% @machines.each do |machine| %>
-<td>
-<fieldset>
-<legend><p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Nom machine:</b>
   <%= machine.nom_machine %>
-</p></legend>
-
+</p>
 
 <p>
   <b>Ip machine:</b>
@@ -71,15 +58,8 @@
 </p>
 
 
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Edit', showdetails_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>
-</fieldset>
-</td>
 <% end %>
-</tr>
-</table>
-<% end %>
-
 <%= link_to 'Edit', edit_salle_path(@salle) %> |
 <%= link_to 'Back', salles_path %>
-</fieldset>
