@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			render 'new'
 		else
 			sign_in user
-			redirect_to_pwd
+			redirect_to session[:pwd]
 		end
 	end
 

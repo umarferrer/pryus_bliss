@@ -13,6 +13,3 @@ module ApplicationHelper
 		image_tag("logo.png", :alt => "Bliss - Pryus")
 	end
 end
-
-
-

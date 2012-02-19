@@ -14,7 +14,10 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     @machine = Machine.find(params[:id])
-
+	machine_id = params[:id]
+	mac = Machine.find machine_id
+	@salles = Salle.find mac.salle_id
+    #@Salles = Salle.find(:all, :conditions =>{:salle_id => Salle.find(params[:id])})
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @machine }
@@ -25,6 +28,7 @@ class MachinesController < ApplicationController
   # GET /machines/new.json
   def new
     @machine = Machine.new
+	@salles = Salle.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +39,15 @@ class MachinesController < ApplicationController
   # GET /machines/1/edit
   def edit
     @machine = Machine.find(params[:id])
+	@salles = Salle.all
+	
   end
 
   # POST /machines
   # POST /machines.json
   def create
     @machine = Machine.new(params[:machine])
+	@salles = Salle.all
 
     respond_to do |format|
       if @machine.save
@@ -57,6 +64,7 @@ class MachinesController < ApplicationController
   # PUT /machines/1.json
   def update
     @machine = Machine.find(params[:id])
+	
 
     respond_to do |format|
       if @machine.update_attributes(params[:machine])
