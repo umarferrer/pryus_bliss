@@ -6,13 +6,14 @@ class SessionsController < ApplicationController
 
 	def create
 		user = Administrateur.authentifier(params[:sessions][:login_mail],params[:sessions][:password])
+
 		if user.nil?
 			@titre = "Identification"
-			flash.now[:error] = "Votre pseudo ou votre mot de passe est incorrect"
+			flash.now[:error] = "Combinaison Email/Mot de passe invalide."
 			render 'new'
 		else
 			sign_in user
-			redirect_to_pwd
+			redirect_to root_path
 		end
 	end
 

@@ -1,7 +1,7 @@
 <div id="header">
 
 	<div id="logo">
-		<%= link_to raw("<span class='gray'>PRYUS</span> (Bliss)") , root_path %>
+		<%= link_to raw("<span class='gray'>PRYUS</span> == Bliss ==") , root_path %>
 	</div>
 
 	<% if signed_in? %>
@@ -23,33 +23,28 @@
 
 </div>
 
-<div  id="connexion" >
+<div style="display:none" id="connexion" >
 	
 	<%= form_for(:sessions, :url => sessions_path) do |f| %>
-		<table>		
-			<tr>
-				<td>
-						<%= f.label :login_mail, "Login :" %><br />
-						<%= f.text_field :login_mail %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-						<%= f.label :password, "Password :" %><br />
-						<%= f.password_field :password %>
-				</td>
-			</tr>
-			<tr>
-				<td class="right" >
-						<%= link_to raw("Mot de passe oublié ?"), forgot_password_path, :class => "oublie_mdp" %>
-				</td>
-			</tr>
-			<tr>
-				<td class="center" >
-						<%= f.submit "S'identifier" %>
-				</td>
-			</tr>
-		</table>
+		
+		<div>
+			<%= f.label :login_mail, "Login" %>
+			<%= f.text_field :login_mail %>
+		</div>
+
+		<div>
+			<%= f.label :password, "Password" %>
+			<%= f.password_field :password %>
+		</div>
+
+		<div>
+			<%= f.submit "S'identifier" %>
+		</div>
+
+		<div>
+			<%= link_to "Mot de passe oublié ?", '#' %>
+		</div>
+
 	<% end %>
 
 </div>

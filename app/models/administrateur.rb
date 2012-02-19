@@ -3,11 +3,7 @@ class Administrateur < ActiveRecord::Base
 	attr_accessible :login_mail, :hached_password
 
 	attr_accessor :password
-	attr_accessible :nom_admin, :prenom_admin, :login_mail, :password , :password_confirmation
-
-	validates :password, :presence => true,
-					:confirmation => true,
-					:length => { :within => 2..40 }
+	attr_accessible :nom_admin, :prenom_admin, :login_mail, :password
 
 	before_save :encrypt_password
 
@@ -45,9 +41,7 @@ class Administrateur < ActiveRecord::Base
 
 		def encrypt_password
 			self.salt=make_salt if new_record?
-				if !password.nil?
-					self.hached_password = encrypt(password) 
-				end
+			self.hached_password = encrypt(password)
 		end
 
 		def encrypt(string)

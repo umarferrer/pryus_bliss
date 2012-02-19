@@ -1,5 +1,57 @@
-<h1>New machine</h1>
+<h1>Création d'une machine</h1>
 
 <%= render 'form' %>
+<%= form_for(@machine) do |f| %>
+  <% if @machine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+      <ul>
+      <% @machine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nom_machine %><br />
+    <%= f.text_field :nom_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :ip_machine %><br />
+    <%= f.text_field :ip_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :id_salle_machine %><br />
+    <select>
+    	<% @salles = Salle.showsalle %>
+    	<% @salles.each do |salle| %>
+    	<option id="#{<%=salle.id_salle%>}"><%= salle.id_salle%></option>
+    	<% end %>
+    </select>
+    <%= f.text_field :id_salle_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :description_machine %><br />
+    <%= f.text_field :description_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :date_crea_machine %><br />
+    <%= f.text_field :date_crea_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :etat_machine %><br />
+    <%= f.text_field :etat_machine %>
+  </div>
+  <div class="field">
+    <%= f.label :etat_service_machine %><br />
+    <%= f.text_field :etat_service_machine %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Back', machines_path %>

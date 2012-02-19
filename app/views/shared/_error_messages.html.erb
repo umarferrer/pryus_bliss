@@ -1,14 +1,13 @@
-<div id ="erreur_messages" >
-	<% if object.errors.any? %>
-		<h2>
-			<%= pluralize(object.errors.count, "Erreur") %> 
-			ont empeche d'enregistrer votre <%= object.class.to_s.underscore.humanize.downcase %> 
-		</h2>
-		<p>Merci de corriger ces champs :</p>
-		
+<% if object.errors.any? %>
+	<h2>
+		<%= pluralize(object.errors.count, "erreur") %> 
+		ont empêché d'enregistrer votre <%= object.class.to_s.underscore.humanize.downcase %> 
+	</h2>
+	<p>Merci de corriger ces champs :</p>
+	<ul>
 		<% object.errors.full_messages.each do |msg| %>
-			<span><%= msg %></span><br />
-		<% end %>	
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
 
-	<% end %>
-</div>
+<% end %>

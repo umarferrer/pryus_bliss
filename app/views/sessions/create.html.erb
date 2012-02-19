@@ -1,4 +1,4 @@
-<div >
+<div id="connexion" >
 	
 	<%= form_for(:sessions, :url => sessions_path) do |f| %>
 		
@@ -8,8 +8,8 @@
 		</div>
 
 		<div>
-			<%= f.label :password, "Password" %>
-			<%= f.password_field :password %>
+			<%= f.label :hached_password, "Password" %>
+			<%= f.password_field :hached_password %>
 		</div>
 
 		<div>

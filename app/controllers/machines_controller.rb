@@ -25,7 +25,7 @@ class MachinesController < ApplicationController
   # GET /machines/new.json
   def new
     @machine = Machine.new
-
+    @machines = Machine.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @machine }
@@ -35,6 +35,7 @@ class MachinesController < ApplicationController
   # GET /machines/1/edit
   def edit
     @machine = Machine.find(params[:id])
+    @machines = Machine.find(:all)
   end
 
   # POST /machines
@@ -47,6 +48,7 @@ class MachinesController < ApplicationController
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render json: @machine, status: :created, location: @machine }
       else
+        @machines = Machine.find(:all)
         format.html { render action: "new" }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
@@ -63,6 +65,7 @@ class MachinesController < ApplicationController
         format.html { redirect_to @machine, notice: 'Machine was successfully updated.' }
         format.json { head :ok }
       else
+        @machines = Machine.find(:all)
         format.html { render action: "edit" }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
@@ -80,4 +83,6 @@ class MachinesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  
 end
