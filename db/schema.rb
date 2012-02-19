@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20120217222011) do
   end
 
   create_table "incidents", :force => true do |t|
-    t.integer  "id_machine_incident"
+    t.integer  "machine_id"
     t.string   "date_incident"
     t.string   "date_resolution_incident"
     t.string   "statut_incident"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120217222011) do
   create_table "machines", :force => true do |t|
     t.string   "nom_machine"
     t.string   "ip_machine"
-    t.integer  "id_salle_machine"
+    t.integer  "salle_id"
     t.string   "description_machine"
     t.string   "date_crea_machine"
     t.string   "etat_machine"

@@ -3,7 +3,7 @@
 one:
   nom_machine: MyString
   ip_machine: MyString
-  id_salle_machine: 
+  salle_id: 
   description_machine: MyString
   date_crea_machine: MyString
   etat_machine: MyString
@@ -12,7 +12,7 @@ one:
 two:
   nom_machine: MyString
   ip_machine: MyString
-  id_salle_machine: 
+  salle_id: 
   description_machine: MyString
   date_crea_machine: MyString
   etat_machine: MyString
