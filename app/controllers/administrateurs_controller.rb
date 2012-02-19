@@ -4,64 +4,61 @@ class AdministrateursController < ApplicationController
   # GET /administrateurs.json
 
 
-  def send_password
-    @titre="Password recovery"
-  end
+	def forgot_password
 
-  def forgot_password
-    user = Administrateur.find_by_login_mail(params[:email])
-	
-	if (user) 
+		@titre="Forgot password"
 
-		user.reset_password_code_until = 1.day.from_now
-		user.reset_password_code =  Digest::SHA1.hexdigest( "#{user.login_mail}--#{Time.now.utc}" )
-		user.save!
-	#	mail=Notifier.welcome().deliver
-
-
-
-
-
-  mail = Mail.new do
-  from 'ferrer.umar@gmail.com'
-  to 'assatoc@gmail.com'
-  subject  'Here is the image you wanted'
-  body     "hey"#File.read('body.txt')
-
-end
-
-mail.deliver!
-
-
-
-
-
-
-
-
-
-
-
-
-		flash[:succes] = "Ok"
-		redirect_to root_path
-	else
-		flash[:error] = "Ok"
-		redirect_to root_path
-	end 
-
-  end
-
-	def reset_password
-		user = Administrateur.find_by_reset_password_code(params[:reset_code])
-		if user &&  user.reset_password_code_until  && Time.now < user.reset_password_code_until 
-      cookies.permanent.signed[:remember_token] = [user.id, user.salt]
-      self.current_user = user 
-    end
-		redirect_to root_path
 	end
- 
- 
+
+	def new_password_request
+
+		user = Administrateur.find_by_login_mail(params[:email])
+
+		if (user) 
+
+			user.reset_password_code_until = 1.day.from_now
+			user.reset_password_code =  Digest::SHA1.hexdigest( "#{user.login_mail}--#{Time.now.utc}" )
+			user.save!
+			Notifier.send_token(Administrateur.first).deliver
+			flash[:noti] = "Un mail vous a ete envoye. Il contient un lien que vous devrez visiter pour que votre mot de passe soit change"
+			redirect_to root_path
+
+		else
+
+			@titre="Forgot password"
+			flash.now[:error] = "Il n'y a pas de compte avec ce login"
+			params[:email]=nil
+			render 'forgot_password'
+
+		end 
+
+	end
+
+	def change_password_request
+
+		user = Administrateur.find_by_reset_password_code(params[:reset_code])
+
+		if user &&  user.reset_password_code_until  && Time.now < user.reset_password_code_until 
+
+			cookies.permanent.signed[:remember_token] = [user.id, user.salt]
+			self.current_user = user 
+			@titre="Change password request"			
+
+		else
+
+			flash[:error] = "Il n'y a pas de demande de changement de mot de passe avec ces parametres"
+			redirect_to root_path
+
+		end
+
+	end
+
+	def change_password_process
+
+		@user=current_user		
+
+	end
+
  
   def index
     @administrateurs = Administrateur.all

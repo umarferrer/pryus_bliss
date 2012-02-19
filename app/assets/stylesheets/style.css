@@ -100,6 +100,34 @@ a:visited {
 
 /* ****************************************************
 
+			administrateur/forgot_password.html
+						
+**************************************************** */
+#forgot_password_div {
+	width: 200px;
+	margin:auto;
+	padding: 20px; 
+	border:1px solid;
+	margin-top:100px;
+	margin-bottom:100px;
+}
+
+/* ****************************************************
+
+			administrateur/change_password_request.html
+						
+**************************************************** */
+#change_password_request_div {
+	margin:auto;
+	width: 320px; 
+	padding: 20px; 
+	border: 1px solid;
+	margin-top:100px;
+	margin-bottom:100px;
+}
+
+/* ****************************************************
+
 						Body 
 						
 **************************************************** */
@@ -134,10 +162,15 @@ a:visited {
 	border: 1px solid; 
 	padding: 20px;
 }
-#flash {
-	padding-left: 0px;
-}
 .error{
 	color: red;
+	text-align: center;
+}
+.succes{
+	color: green;
+	text-align: center;
+}
+.noti{
+	color: orange;
 	text-align: center;
 }

@@ -25,11 +25,11 @@
 
 			<div id="content">
 
-				<ul id="flash">
+				<div id="flash">
 					<% flash.each do |key, value| %>
-						<li class="<%= key %>"><%= value %></li>
+						<p class="<%= key %>"><%= value %></p>
 					<% end %>
-				</ul>
+				</div>
 			
 				
 				<%= yield %>

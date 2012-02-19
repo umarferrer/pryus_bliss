@@ -13,9 +13,11 @@ PryusBliss::Application.routes.draw do
   resources :salles
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/send_password', :to => 'administrateurs#send_password'
   match '/forgot_password', :to => 'administrateurs#forgot_password'
-  match '/reset_password', :to => 'administrateurs#reset_password'
+  match '/new_password_request', :to => 'administrateurs#new_password_request'
+  match '/change_password_request', :to => 'administrateurs#change_password_request'
+  match '/change_password_process', :to => 'administrateurs#change_password_process'
+  
   match '/signout',  :to => 'sessions#destroy'
 
 
