@@ -7,6 +7,7 @@ gem 'rails', '3.1.1'
 
 gem 'heroku'
 gem 'sqlite3'
+gem 'builder'
 
 group :production do
 	#gem 'therubyracer-heroku'

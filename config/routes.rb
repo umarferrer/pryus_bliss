@@ -21,6 +21,19 @@ PryusBliss::Application.routes.draw do
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'
 
+  resource :js do
+    collection do
+      get 'view'
+      get 'data'
+      get 'dbaction'
+    end
+  end
+  resource :charts do
+    collection do
+      get 'chart'
+    end
+  end
+
 
 
   # The priority is based upon order of creation:
