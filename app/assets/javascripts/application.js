@@ -22,4 +22,13 @@ $(document).ready(function() {
 		width :265,
 	});
 
+
+	$( "#index_menu" ).accordion({
+			//event: "mouseover"
+			collapsible: true,
+			active: false,
+			
+
+		});
+
 })

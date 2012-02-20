@@ -41,6 +41,10 @@ module SessionsHelper
 		clear_pwd
 	end
 
+	def even?(number)
+		return true if (number % 2) == 0
+	end
+
 	private
 
 		def user_from_remember_token

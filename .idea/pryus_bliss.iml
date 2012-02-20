@@ -68,5 +68,9 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.31, ruby-1.9.2-p290) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v1.2.3, ruby-1.9.2-p290) [gem]" level="application" />
   </component>
+  <component name="RModuleSettingsStorage">
+    <LOAD_PATH number="0" />
+    <I18N_FOLDERS number="1" string0="$MODULE_DIR$/config/locales" />
+  </component>
 </module>
 
