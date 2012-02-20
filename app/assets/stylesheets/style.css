@@ -164,9 +164,7 @@ a:visited {
 	vertical-align:top
 }
 .salles {
-	border: 1px solid;
 	margin: 0px 0px 10px 10px;
-
 	width: 288px;
 }
 .even {
@@ -186,7 +184,50 @@ a:visited {
 	font-weight: 400;
 	font-style: italic;
 }
+.table_machines {
+	text-align:center;
+	margin:auto;
+	 
+}
+.infobull {
+	position: relative; 
+}
+.infobull p {
+	display: none;
+	position: absolute;
+	margin: 0px;
+	margin-top:0px;
+	margin-left:50px;
+	padding: 5px;
+	width: 200px;
+	text-align:left;
+	background: white;
+	border: 1px solid;	
+	z-index:4;
+}
+.ul_machines {
+	list-style: none;
+	padding: 10px;
+}
+.ul_machines table {
+	margin:auto;
+}
+.ul_machines li{
+	width: 134px;
+	display: inline;
 
+}
+#index_menu h3.ui-state-active{
+	
+	background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
+}
+#heyhey {
+	padding-top: 0px; 
+	padding-left: 0px;
+}
+#heyhey a{
+	color:black;
+}
 /* ****************************************************
 
 						Body 

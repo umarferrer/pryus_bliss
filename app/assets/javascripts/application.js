@@ -31,4 +31,11 @@ $(document).ready(function() {
 
 		});
 
+	$('.table_machines').hover(function(){
+		$(this).find(".infobull p").fadeIn();
+		//$('.infobull p').show();
+	}, function(){
+		$(".infobull p").hide();
+	});
+
 })

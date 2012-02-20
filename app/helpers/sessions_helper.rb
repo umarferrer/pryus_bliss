@@ -45,6 +45,10 @@ module SessionsHelper
 		return true if (number % 2) == 0
 	end
 
+	def evenn?(number)
+		return true if (number % 2) == 0
+	end
+
 	private
 
 		def user_from_remember_token

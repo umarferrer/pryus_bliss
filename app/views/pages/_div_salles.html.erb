@@ -1,12 +1,39 @@
-<div class="salles">
-<h3><%= s.nom_salle %><span> - <%= s.ip_reseau %><%s.masque_reseau %></span></h3>
-<ul>
-	<% s.machines.each do |m| %>
-		<li>
-			<% m.etat_machine %><% m.etat_service_machine %>
-			<h5><%= m.nom_machine %></h5>
-			<span><%= m.nom_machine %> | <%= m.ip_machine %> | <%= m.description_machine %><span> 
-		</li>
-	<% end %>
-</ul>
+<div class="salles ui-corner-all ui-widget-content">
+	<h3 class="ui-state-default "><%= s.nom_salle %><span> - <%= s.ip_reseau %><%s.masque_reseau %></span></h3>
+	<ul class="ul_machines" >
+		<% @o=1 %>
+		<table>
+			<tr>
+			<% s.machines.each do |m| %>		
+					<td>	
+						<li>
+							<table class="table_machines" >
+								
+								<% m.etat_machine %><% m.etat_service_machine %>
+								<tr>
+									<td>
+										<div class="infobull">
+											<%= image_tag("machine.png", :alt=> m.nom_machine, :class => "hoho" ) %>
+											<p>Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
+										</div>
+
+									</td>
+								</tr>
+								<tr>
+									<td><%= m.nom_machine %></td>
+								</tr>
+
+							</table>
+						</li>
+				<% if @o == 4 %>	
+					</td>
+							</tr><tr>
+							<% @o=1 %>
+				<% else %>
+					</td>
+							<% @o+=1 %>
+				<% end %>	
+			<% end %>
+		</table>
+	</ul>
 </div>
