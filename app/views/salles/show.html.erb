@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
+<fieldset>
+<legend>
+
 
 <p>
   <b>Nom salle:</b>
   <%= @salle.nom_salle %>
-</p>
+</p></legend>
 
 <p>
   <b>Ip reseau:</b>
@@ -16,10 +18,66 @@
 </p>
 
 <p>
-  <b>Nbre machine:</b>
+  <b>Nbre machine:</b><%= nbremachine(@salle.id) %>
   <%= @salle.nbre_machine %>
 </p>
 
 
-<%= link_to 'Edit', edit_salle_path(@salle) %> |
-<%= link_to 'Back', salles_path %>
+<% if @machines.blank? %>
+  <b><h2>la salle de machine est vide</h2></b>
+</p>
+<% else %>
+<table>
+<tr>
+<% @machines.each do |machine| %>
+<td>
+<fieldset>
+<legend><p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom machine:</b>
+  <%= machine.nom_machine %>
+</p></legend>
+
+
+<p>
+  <b>Ip machine:</b>
+  <%= machine.ip_machine %>
+</p>
+
+<p>
+  <b>Id salle machine:</b>
+  <%= machine.salle_id %>
+</p>
+
+<p>
+  <b>Description machine:</b>
+  <%= machine.description_machine %>
+</p>
+
+<p>
+  <b>Date crea machine:</b>
+  <%= machine.date_crea_machine %>
+</p>
+
+<p>
+  <b>Etat machine:</b>
+  <%= machine.etat_machine %>
+</p>
+
+<p>
+  <b>Etat service machine:</b>
+  <%= machine.etat_service_machine %>
+</p>
+
+
+<%= link_to 'Modifier:'.concat("#{machine.nom_machine}"), edit_machine_path(@machine) %>
+</fieldset>
+</td>
+<% end %>
+</tr>
+</table>
+<% end %>
+<%= link_to 'Modifier', edit_salle_path(@salle) %> |
+<%= link_to 'Retour', salles_path %>
+</fieldset>

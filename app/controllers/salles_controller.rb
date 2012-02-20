@@ -1,4 +1,15 @@
 class SallesController < ApplicationController
+
+ # before_destroy :vider_salle
+ #Verification de la salle , si elle est vide
+  def vider_salle
+    if nbre_machine(self.Salle.id_salle).to_i == 0
+      return true
+    else
+      return false
+    end
+  end
+
   # GET /salles
   # GET /salles.json
   def index
@@ -12,12 +23,26 @@ class SallesController < ApplicationController
 
   # GET /salles/1
   # GET /salles/1.json
-  def show
+  #Methode d'affichage d'une salle de base
+  def showdetails
     @salle = Salle.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @salle }
+    end
+  end
+
+  # GET /salles/1
+  # GET /salles/1.json
+  #Methode d'affichage d'une salle avec toutes les machines
+  def show
+    @salle = Salle.find(params[:id])
+
+    @machines = Machine.find(:all, :conditions =>{:salle_id => Salle.find(params[:id])})
+      respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @machines }
     end
   end
 
@@ -73,11 +98,26 @@ class SallesController < ApplicationController
   # DELETE /salles/1.json
   def destroy
     @salle = Salle.find(params[:id])
-    @salle.destroy
+    if @salle.machines.blank?
+       @salle.destroy
 
-    respond_to do |format|
-      format.html { redirect_to salles_url }
-      format.json { head :ok }
+        respond_to do |format|
+          format.html { redirect_to salles_url }
+          format.json { head :ok }
+        end
+         
+    else
+   
+     respond_to do |format|
+            format.html { redirect_to salles_url , notice: 'Vider la salle avant de la supprimer.' }
+            format.json { head :ok }
+          end
     end
   end
+
+  # Test /salles/1.json
+  def self.showsalle
+    return  Machine.all
+  end
+
 end
