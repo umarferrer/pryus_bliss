@@ -1,0 +1,12 @@
+<div class="salles">
+<h3><%= s.nom_salle %><span> - <%= s.ip_reseau %><%s.masque_reseau %></span></h3>
+<ul>
+	<% s.machines.each do |m| %>
+		<li>
+			<% m.etat_machine %><% m.etat_service_machine %>
+			<h5><%= m.nom_machine %></h5>
+			<span><%= m.nom_machine %> | <%= m.ip_machine %> | <%= m.description_machine %><span> 
+		</li>
+	<% end %>
+</ul>
+</div>

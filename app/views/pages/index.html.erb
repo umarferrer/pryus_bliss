@@ -1,71 +1,50 @@
-
 <table id="index_table" >
-
 	<tr>
-
 		<td>
-
-		<div class="index_menu ui-accordion ui-widget ui-helper-reset ui-accordion-icons" >   
-			<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all"> 	
-		    	<span class="ui-icon ui-icon-triangle-1-e"></span>
-				<%= link_to 'Tous les salles', root_path %>
-			</h3>
-		</div>
-
-		<div id="index_menu">
-			<% @salles.each do |s| %>
-				<h3><%= link_to s.nom_salle, '#' %></h3>
-				<div>
-					<p>
-						<ul>
-						<% s.machines.each do |m| %>
-							<li><%= link_to m.nom_machine, "#", :class => "index_menu_a" %></li>
-						<% end %>
-						</ul>
-					</p>
-				</div>
-
-			<% end %>
-		</div>
-
-		</td>
-
-		<td>
-
-			<div id="index_salles" >
-
-
-
-				<% @salles.each do |s| %>
-					<% if even?(@i) %>
-						<div class="salles even">
-					<% else %>
-						<div class="salles odd">
-					<% end %> <% @i+=1 %>
-					
-						<h3><%= s.nom_salle %><span> - <%= s.ip_reseau %><%s.masque_reseau %></span></h3>
-						<ul>
-							<% s.machines.each do |m| %>
-								<li>
-									<% m.etat_machine %><% m.etat_service_machine %>
-									<h5><%= m.nom_machine %></h5>
-									<span><%= m.nom_machine %> | <%= m.ip_machine %> | <%= m.description_machine %><span> 
-								</li>
-							<% end %>
-						</ul>
-
-					</div>
-				<% end %>
-
-
-
-
-
-			
+			<div class="index_menu ui-accordion ui-widget ui-helper-reset ui-accordion-icons" >   
+				<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all"> 	
+			    	<span class="ui-icon ui-icon-triangle-1-e"></span>
+					<%= link_to 'Tous les salles', root_path %>
+				</h3>
 			</div>
 
+			<div id="index_menu">
+				<% @salles.each do |s| %>
+					<h3><%= link_to s.nom_salle, '#' %></h3>
+					<div>
+						<p>
+							<ul>
+							<% s.machines.each do |m| %>
+								<li><%= link_to m.nom_machine, "#", :class => "index_menu_a" %></li>
+							<% end %>
+							</ul>
+						</p>
+					</div>
+
+				<% end %>
+			</div>
 		</td>
-
+		<td>
+			<div id="index_salles" >
+				<table>					
+					<tr>
+						<% @salles.each do |s| %>						
+							<% if even?(@i) %>					
+								<td>
+									<%= render 'div_salles', :s => s %>
+								</td>
+							<% else %>
+								<td>
+									<%= render 'div_salles', :s => s %>
+								</td>
+								</tr><tr>
+							<% end %> <% @i+=1 %>							
+						<% end %>
+					</tr>
+				</table>			
+			</div>
+		</td>
 	</tr>
-
 </table>
+
+

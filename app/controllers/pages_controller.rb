@@ -8,6 +8,10 @@ class PagesController < ApplicationController
 
 	def machine_historique
 
+       @titre="Index"
+        @salles=Salle.all
+        @i=0
+
 	end
 
 
