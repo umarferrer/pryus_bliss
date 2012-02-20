@@ -1,3 +1,5 @@
 class Salle < ActiveRecord::Base
-	has_many :machines 
+	attr_accessible :nom_salle, :ip_reseau, :masque_reseau, :nbre_machine
+	
+	has_many :machines
 end
