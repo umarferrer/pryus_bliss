@@ -1,7 +1,7 @@
 <div class="salles ui-corner-all ui-widget-content">
 	<h3 class="ui-state-default "><%= s.nom_salle %><span> - <%= s.ip_reseau %><%s.masque_reseau %></span></h3>
 		<% if signed_in? %>
-			<ul class="ul_machines signed_in_ul_machines">
+			<ul class="ul_machines signed_in_ul_machines" id_salle=<%= s.id %>>
 		<% else %>
 			<ul class="ul_machines">
 		<% end %>
@@ -9,7 +9,7 @@
 			<% s.machines.each do |m| %>	
 			
 			<% if signed_in? %>
-				<li class="li_machines signed_in_li_machines" >
+				<li class="li_machines signed_in_li_machines" id_machine=<%= m.id %> >
 			<% else %>
 				<li class="li_machines" >
 			<% end %>	

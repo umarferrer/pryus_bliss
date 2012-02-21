@@ -7,13 +7,18 @@ class PagesController < ApplicationController
 	end
 
 	def machine_historique
-
-       @titre="Index"
-        @salles=Salle.all
-        @i=0
-
+		@titre="Index"
+		@salles=Salle.all
+		@i=0
 	end
 
+	def update_menu
+		@salles=Salle.all
+
+		render 'pages/_index_menu.html.erb', :layout => false
+
+
+	end
 
 	def view
     end

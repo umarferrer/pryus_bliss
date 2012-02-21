@@ -1,4 +1,3 @@
-<h3 id="plop">click me</h3>
 <table id="index_table" >
 	<tr>
 		<td>
@@ -10,19 +9,7 @@
 			</div>
 
 			<div id="index_menu">
-				<% @salles.each do |s| %>
-					<h3><%= link_to s.nom_salle, '#' %></h3>
-					<div id="div_menu_gache">
-						<p>
-							<ul>
-							<% s.machines.each do |m| %>
-								<li><%= link_to m.nom_machine, "#", :class => "index_menu_a" %></li>
-							<% end %>
-							</ul>
-						</p>
-					</div>
-
-				<% end %>
+				<%= render 'index_menu', :salles => @salles %>			
 			</div>
 		</td>
 		<td>

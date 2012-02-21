@@ -50,6 +50,7 @@ $(document).ready(function() {
 			$(this).removeClass("dontmoveme");
 			$(".dontmovemediv").droppable( "option", "accept", "*" );
 			$(".dontmovemediv").removeClass("dontmovemediv");
+			$(".signed_in_li_machines").css('top' , '0px ');
 		}
 	});
 
@@ -58,22 +59,39 @@ $(document).ready(function() {
 		hoverClass: "ui-state-hover-perso",
 		drop: function( event, ui ) {
 			$( ui.draggable ).addClass("deplaced");
-			$(".deplaced").appendTo( this );
-			$(this).find(".separateur").appendTo( this );
-			$(".deplaced").removeClass("deplaced");
+			$( this ).addClass("deplaced_ici");		
+			$.ajax({
+				url: "/update_machine?id="+$( ui.draggable).attr("id_machine")+"&salle="+$( this ).attr("id_salle") ,
+				success:function(data){
+					if ( data.search(/ajaxok/i) != -1 ) { 
+						$(".deplaced").appendTo( ".deplaced_ici" );
+						$(".deplaced_ici").find(".separateur").appendTo( ".deplaced_ici" );
+						$(".deplaced").removeClass("deplaced");
+						$(".deplaced_ici").removeClass("deplaced_ici");
+						refresh_menu();
+					}
+					else if ( data.search(/404salle/i) != -1 ) {
+						alert("Oups votre salle a disparu !");
+					}
+					else {
+						window.location.replace("/signin");
+					}
+				}			
+			});						
 		}
 	});
-
-
-
-	$( "#plop" ).click(function() {
-		
+	function refresh_menu() {		
 		$.ajax({
-			url: "/update_machine?id=2&salle=5",
-			success: function(){
-				
-			}
+				url: "/update_menu" ,
+				success:function(data){
+					$("#index_menu").html(data);
+						
+						$( "#index_menu" ).accordion( "destroy" );
+						$( "#index_menu" ).accordion({
+							collapsible: true,
+							active: false,			
+						});				
+				}			
 		});
-	});
-
+	};
 })

@@ -1,4 +1,6 @@
 class MachinesController < ApplicationController
+
+  before_filter :authenticate, :only => :update_machine
   # GET /machines
   # GET /machines.json
   def index
@@ -89,7 +91,16 @@ class MachinesController < ApplicationController
   end
 
   def update_machine
-    params[:id]
-    params[:salle]
+    @machine=Machine.find_by_id(params[:id])
+    if @machine.nil?
+      render :status => 500
+    else
+      if !Salle.find_by_id(params[:salle]).nil?
+        @machine.update_attributes!(:salle_id => params[:salle])
+        render :inline => "ajaxok"
+      else
+        render :inline => "404salle"
+      end
+    end
   end
 end

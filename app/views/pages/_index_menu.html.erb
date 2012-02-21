@@ -1,0 +1,12 @@
+<% @salles.each do |s| %>
+	<h3><%= link_to s.nom_salle, '#' %></h3>
+	<div id='div_menu_gache'>
+		<p>
+			<ul>
+			<% s.machines.each do |m| %>
+				<li><%= link_to m.nom_machine, '#', :class => 'index_menu_a' %></li>
+			<% end %>
+			</ul>
+		</p>
+	</div>
+<% end %>

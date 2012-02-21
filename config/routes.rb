@@ -21,7 +21,10 @@ PryusBliss::Application.routes.draw do
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'
 
+  #Ajax
   match '/update_machine',  :to => 'machines#update_machine'
+  match '/update_menu', :to => 'pages#update_menu'
+
 
   resource :js do
     collection do
