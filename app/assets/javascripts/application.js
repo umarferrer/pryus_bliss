@@ -54,14 +54,26 @@ $(document).ready(function() {
 	});
 
 	$( ".signed_in_ul_machines" ).droppable({
-			activeClass: "ui-state-default-perso",
-			hoverClass: "ui-state-hover-perso",
-			drop: function( event, ui ) {
-				$( ui.draggable ).addClass("deplaced");
-				$(".deplaced").appendTo( this );
-				$(this).find(".separateur").appendTo( this );
-				$(".deplaced").removeClass("deplaced");
+		activeClass: "ui-state-default-perso",
+		hoverClass: "ui-state-hover-perso",
+		drop: function( event, ui ) {
+			$( ui.draggable ).addClass("deplaced");
+			$(".deplaced").appendTo( this );
+			$(this).find(".separateur").appendTo( this );
+			$(".deplaced").removeClass("deplaced");
+		}
+	});
+
+
+
+	$( "#plop" ).click(function() {
+		
+		$.ajax({
+			url: "/update_machine?id=2&salle=5",
+			success: function(){
+				
 			}
 		});
+	});
 
 })

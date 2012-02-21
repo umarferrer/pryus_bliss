@@ -2,7 +2,7 @@
         <script type="text/javascript" charset="utf-8">
             var grid = new dhtmlXGridObject("grid");
 			grid.setImagePath("../assets/dhtmlx/imgs/");
-            grid.setHeader("Rank, Firstname,Lastname,Pass");
+            grid.setHeader("Nom,Prenom,Email,Password");
             grid.setColSorting("str,str,str,str");  //added !
             grid.setColTypes("ed,ed,ed,pass");
 			grid.setInitWidths("100,100,100,100");
@@ -14,5 +14,8 @@
 		    dp = new dataProcessor("/js/dbaction.xml");
             dp.init(grid);
         </script>
-<input type="button" value="Add" onclick="grid.addRow(grid.uid(),'new user')">
+<input type="button" value="Add" onclick="grid.addRow(grid.uid(),'new users')">
 <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
+
+
+ 

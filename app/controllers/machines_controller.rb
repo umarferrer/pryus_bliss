@@ -87,4 +87,9 @@ class MachinesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def update_machine
+    params[:id]
+    params[:salle]
+  end
 end

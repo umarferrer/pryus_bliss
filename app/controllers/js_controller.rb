@@ -4,13 +4,11 @@ def view
     def data
         @administrateurs = Administrateur.all
     end
-	
-	def secure_hach(string)
-		Digest::SHA2.hexdigest(string)
-	end
-	def dbaction
+
+
+    def dbaction
         #called for all db actions
-		nom_admin = params["c0"]
+        nom_admin = params["c0"]
         prenom_admin = params["c1"]
         login_mail    = params["c2"]
         hached_password  = params["c3"]
@@ -20,14 +18,14 @@ def view
         @id = params["gr_id"]
         case @mode
             when "inserted"
-				@salt=secure_hach("#{Time.now.utc}--#{hached_password}")
+                @salt=secure_hach("#{Time.now.utc}--#{hached_password}")
                 user = Administrateur.new
-                user.nom_admin = nom_admin
-				user.prenom_admin = prenom_admin
-                user.login_mail = login_mail
-                user.hached_password = secure_hach("#{@salt}--#{hached_password}")
-                user.salt=@salt
-				user.save!
+                user.nom_admin = "nom_admin"
+                user.prenom_admin = "prenom_admin"
+                user.login_mail = "login_mail@gmail.com"
+                user.password = "admin"
+                user.password_confirmation = user.password
+                user.save!
                
                 @tid = user.id
             when "deleted"
@@ -36,13 +34,15 @@ def view
                
                 @tid = @id
             when "updated"
-                user=Administrateur.find(@id)
-                user.nom_admin = nom_admin
-				user.prenom_admin = prenom_admin
-                user.login_mail = login_mail
-                user.hached_password = secure_hach("#{user.salt}--#{hached_password}")
-				user.save!
-               
+                if nom_admin!='' and prenom_admin != '' and login_mail!= '' and  hached_password != ''
+                    user=Administrateur.find(@id)
+                    user.nom_admin = nom_admin
+                    user.prenom_admin = prenom_admin
+                    user.login_mail = login_mail
+                    user.password = hached_password
+                    user.password_confirmation = user.password
+                    user.save!                   
+                end
                 @tid = @id
         end
     end

@@ -2,7 +2,7 @@ class Administrateur < ActiveRecord::Base
 	
 	attr_accessible :login_mail, :hached_password
 
-	attr_accessor :password
+	attr_accessor :password, :password_confirmation
 	attr_accessible :nom_admin, :prenom_admin, :login_mail, :password , :password_confirmation
 
 	validates :password, :presence => true,
