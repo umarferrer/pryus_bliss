@@ -4,7 +4,7 @@
 		<p>
 			<ul>
 			<% s.machines.each do |m| %>
-				<li><%= link_to m.nom_machine, '#', :class => 'index_menu_a' %></li>
+				<li><%= link_to m.nom_machine, "/machine_historique/#{m.id}", :class => 'index_menu_a' %></li>
 			<% end %>
 			</ul>
 		</p>

@@ -7,17 +7,21 @@ class PagesController < ApplicationController
 	end
 
 	def machine_historique
-		@titre="Index"
-		@salles=Salle.all
-		@i=0
+		@titre="Detaille d'une machine"
+		@machine=Machine.find_by_id(params[:id_machine])
+		if !@machine.nil?
+			@salles=Salle.all
+			@salle=Salle.all
+			@i=0
+		else
+			render :inline => "pasok"
+		end
+
 	end
 
 	def update_menu
 		@salles=Salle.all
-
 		render 'pages/_index_menu.html.erb', :layout => false
-
-
 	end
 
 	def view

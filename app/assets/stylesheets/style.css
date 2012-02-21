@@ -246,25 +246,16 @@ a:visited {
 	clear: both;
 	border:0px; 
 }
+/* ****************************************************
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			Pages/machine_historique.html.erb 
+						
+**************************************************** */
+#detaille_machines {
+	padding-top: 15px; 
+	padding-left: 10px;
+	text-align: left;
+}
 
 
 

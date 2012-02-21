@@ -2,11 +2,15 @@ PryusBliss::Application.routes.draw do
 
 
 
-  get "sessions/new"
-  get "pages/machine_historique"
+  
+ 
+
+  
 
 
   root :to => 'pages#index'
+  match '/machine_historique/:id_machine' => 'pages#machine_historique'
+
   resources :incidents
   resources :administrateurs
   resources :machines
@@ -18,6 +22,7 @@ PryusBliss::Application.routes.draw do
   match '/change_password_request', :to => 'administrateurs#change_password_request'
   match '/change_password_process', :to => 'administrateurs#change_password_process'
   
+  get "sessions/new"
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'
 

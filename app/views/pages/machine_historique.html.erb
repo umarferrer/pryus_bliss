@@ -1,0 +1,111 @@
+<table id="index_table" >
+	<tr>
+		<td>
+			<div class="index_menu ui-accordion ui-widget ui-helper-reset ui-accordion-icons" >   
+				<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all"> 	
+			    	<span class="ui-icon ui-icon-triangle-1-e"></span>
+					<%= link_to 'Tous les salles', root_path %>
+				</h3>
+			</div>
+
+			<div id="index_menu">
+				<%= render 'index_menu', :salles => @salles %>			
+			</div>
+		</td>
+		<td>
+
+
+
+<% @salle.each do |saller| %>
+	 <% if saller.id == @machine.salle.id %>
+	 	<% @i %>
+	 <% else %>
+	 	
+	 	<%= saller.id %> | <%= @machine.salle.id %> //
+	 	<% @i+=1 %>
+	 <% end %>
+<% end %>
+
+			<div id="detaille_machines" salle="<%= @i %>" >
+			<%= @i %>
+					
+
+						
+							
+
+
+
+							<SCRIPT language="Javascript"> 
+
+							$(document).ready(function() {
+
+/*
+								$( "#index_menu" ).accordion( "destroy" );
+								$( "#index_menu" ).accordion({
+									collapsible: true,
+									active: $("#blblb").html("salle"),			
+								});	
+*/
+							})
+							//alert($("#detaille_machines").attr('salle'));
+							</SCRIPT> 
+
+
+
+
+
+
+				<h2>Historique des incidents : <%= @machine.nom_machine %></h2>
+				<div>
+					<p>
+						Description : <%= @machine.description_machine %>
+					</p>
+					<p>
+						Adresse ip : <%= @machine.ip_machine %>
+					</p>
+					<p>
+						Nom de la salle : <%= @machine.salle.nom_salle %>
+					</p>
+					<p>
+						Etat machine :
+					</p>
+					<p>	
+						Etat service :
+					</p>
+				</div>		
+
+				<table>
+					<tr>
+						<td>Date de debut</td>
+						<td>Date de resolution</td>
+						<td>Statut</td>
+						<td>Niveau</td>
+						<td>Propriete</td>
+						<td>Description</td>
+					</tr>
+				</table>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+		</td>
+	</tr>
+</table>
+
+
