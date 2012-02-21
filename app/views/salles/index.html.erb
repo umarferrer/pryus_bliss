@@ -1,29 +1,35 @@
-<h1>Listing salles</h1>
+<fieldset><legend><h1>Liste des  salles</h1></legend>
 
-<table>
+<% if @Salles.blank? %>
+  
+<table border = 1>
   <tr>
-    <th>Nom salle</th>
-    <th>Ip reseau</th>
-    <th>Masque reseau</th>
-    <th>Nbre machine</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Nom salle </th>
+    <th>Ip reseau </th>
+    <th>Masque reseau </th>
+    <th>Nbre machine </th>
+    <th>Afficher</th>
+    <th>Modifier</th>
+    <th>Supprimer</th>
   </tr>
 
 <% @salles.each do |salle| %>
   <tr>
     <td><%= salle.nom_salle %></td>
     <td><%= salle.ip_reseau %></td>
-    <td><%= salle.masque_reseau %></td>
-    <td><%= salle.nbre_machine %></td>
-    <td><%= link_to 'Show', salle %></td>
-    <td><%= link_to 'Edit', edit_salle_path(salle) %></td>
-    <td><%= link_to 'Destroy', salle, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= salle.masque_reseau  %></td>
+    <td><%= nbremachine(salle.id) %></td>
+    <td><%= link_to 'Afficher', salle %></td>
+    <td><%= link_to 'Modifier', edit_salle_path(salle) %></td>
+    <td><%= link_to 'Supprimer', salle, confirm: 'Valider la suppression?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+<%  else %>
 
+<h2><p> Vous n'avez pas encore créer de salle machine</p></h2>
+<% end %>
 <br />
 
-<%= link_to 'New Salle', new_salle_path %>
+<p><h2><%= link_to 'Créer une Salle', new_salle_path %></h2></p>
+</fieldset>
