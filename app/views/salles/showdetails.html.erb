@@ -1,0 +1,27 @@
+<fieldset>
+<legend>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom salle:</b>
+  <%= @salle.nom_salle %>
+</p></legend>
+
+<p>
+  <b>Ip reseau:</b>
+  <%= @salle.ip_reseau %>
+</p>
+
+<p>
+  <b>Masque reseau:</b>
+  <%= @salle.masque_reseau %>
+</p>
+
+<p>
+  <b>Nbre machine:</b><%= nbremachine(@salle.id) %>
+  <%= @salle.nbre_machine %>
+</p>
+
+<%= link_to 'Modifier', edit_salle_path(@salle) %> |
+<%= link_to 'Retour', salles_path %>
+</fieldset>

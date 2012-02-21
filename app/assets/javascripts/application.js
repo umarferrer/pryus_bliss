@@ -11,8 +11,8 @@
 $(document).ready(function() {
 
 	$( "#li_connexion" ).click(function() {
-				$( "#connexion" ).dialog( "open" );
-			});
+		$( "#connexion" ).dialog( "open" );
+	});
 
 	$( "#connexion" ).dialog({
 		autoOpen: false,
@@ -24,18 +24,44 @@ $(document).ready(function() {
 
 
 	$( "#index_menu" ).accordion({
-			//event: "mouseover"
-			collapsible: true,
-			active: false,
-			
-
-		});
+		collapsible: true,
+		active: false,
+	});
 
 	$('.table_machines').hover(function(){
 		$(this).find(".infobull p").fadeIn();
-		//$('.infobull p').show();
 	}, function(){
 		$(".infobull p").hide();
 	});
+
+	$( ".signed_in_li_machines" ).draggable({ 
+		containment: "#index_salles",
+		scroll: true, 
+		scrollSpeed: 10,
+		revert: true,
+		cursor: 'move',	
+		zIndex: 10,
+		start: function(event, ui) {		
+			$(this).addClass("dontmoveme");
+			$(this).parent().droppable( "option", "accept", ":not(.dontmoveme)" );
+			$(this).parent().addClass("dontmovemediv") ;			
+		},
+		stop: function(event, ui) {		
+			$(this).removeClass("dontmoveme");
+			$(".dontmovemediv").droppable( "option", "accept", "*" );
+			$(".dontmovemediv").removeClass("dontmovemediv");
+		}
+	});
+
+	$( ".signed_in_ul_machines" ).droppable({
+			activeClass: "ui-state-default-perso",
+			hoverClass: "ui-state-hover-perso",
+			drop: function( event, ui ) {
+				$( ui.draggable ).addClass("deplaced");
+				$(".deplaced").appendTo( this );
+				$(this).find(".separateur").appendTo( this );
+				$(".deplaced").removeClass("deplaced");
+			}
+		});
 
 })
