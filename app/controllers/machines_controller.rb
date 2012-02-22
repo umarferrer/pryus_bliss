@@ -1,5 +1,5 @@
 class MachinesController < ApplicationController
-
+require 'ping' 
   before_filter :authenticate, :only => :update_machine
   # GET /machines
   # GET /machines.json
@@ -27,6 +27,34 @@ class MachinesController < ApplicationController
       format.json { render json: @machine }
     end
   end
+  def ping
+	@machine = Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+			render :text => "La machines n'&eacute;xiste pas"
+	else
+		  if Ping.pingecho(@machine.ip_machine, 2, 'echo')
+			render :text => "1"
+			@machine.etat_machine=1
+			@machine.save!
+		  else
+			render :text => "0"
+			@machine.etat_machine=0
+			@machine.save!
+		  end
+	end
+end
+def all_ping
+	@machine = Machine.all
+	@machine.each do |mach|
+		if Ping.pingecho(mach.ip_machine, 2, 'echo')
+			mach.etat_machine=1
+			mach.save!
+		else
+			mach.etat_machine=0
+			mach.save!
+		end
+	end
+end
 
   # GET /machines/new
   # GET /machines/new.json

@@ -3,9 +3,10 @@
             var grid = new dhtmlXGridObject("grid");
 			grid.setImagePath("../assets/dhtmlx/imgs/");
             grid.setHeader("Nom,Prenom,Email,Password");
-            grid.setColSorting("str,str,str,str");  //added !
+            grid.setColSorting("str,str,str,str");
             grid.setColTypes("ed,ed,ed,pass");
-			grid.setInitWidths("100,100,100,100");
+			grid.setColAlign("center,center,center,center");
+			grid.setInitWidths("100,100,100,*");
             grid.setSkin("dhx_skyblue");
 			grid.attachHeader("#text_filter,#text_filter,#text_filter,#text_filter");
 			grid.enableMultiselect(true);
@@ -14,8 +15,5 @@
 		    dp = new dataProcessor("/js/dbaction.xml");
             dp.init(grid);
         </script>
-<input type="button" value="Add" onclick="grid.addRow(grid.uid(),'new users')">
+<input type="button" value="Add" onclick="grid.addRow(grid.uid(),'new user')">
 <input type="button" value="Delete" onclick="grid.deleteSelectedRows()">
-
-
- 
