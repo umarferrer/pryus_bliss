@@ -278,15 +278,14 @@ a:visited {
 	margin-top: 20px;
 }
 #hide_salle td{
-	/*display:none;*/
 	vertical-align:baseline;
 }
 .salles_incident_head {
-	margin: auto;
 	width: 200px; 
 	margin-top: 20px; 
 	margin-bottom: 30px;
 	padding-bottom: 20px;
+	margin-left: 13px;
 }
 .orange {
 	color :orange;
@@ -330,7 +329,51 @@ a:visited {
 .salles_incident_conf {
 	width: 480px;	
 }
+.ul_machines_dragme {
+	border:1px dashed; 
+	height: 100px;
+	margin:auto;
+	margin-bottom: 15px;
+	padding-left: 0px;
+	width: 89px; 
+	height: 80px;
+	padding: 10px;
+}
+.ul_machines_dragme li{
+	width: 89px;	
+	float:left;
+	display: inline;
+}
+.ul_machines_dragme li table{
+	margin:auto;
+}
+#amuse_toi {
+	/*display:none;*/
+}
+#faitmoimal {
+	margin :auto;
 
+}
+#faitmoimal td{
+	vertical-align : middle ;
+	text-align:left;
+}
+#slider_ram {
+	width: 200px; 
+	margin-top: 5px !important;
+	margin-left:auto;
+}
+.montemoi {
+	padding-top: 20px;
+}
+#slider_cpu {
+	width: 200px; 
+	margin-top: 5px !important;
+	margin-left:auto;
+}
+.noborder {
+	border:0;
+}
 /* ****************************************************
 
 						Body 

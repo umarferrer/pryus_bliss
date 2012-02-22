@@ -104,4 +104,112 @@ $(document).ready(function() {
 			$("#hide_salle").slideUp();
 		}
 	});
+
+	$('.table_machines_incident').hover(function(){
+		$(this).find(".infobull p").fadeIn();
+	}, function(){
+		$(".infobull p").hide();
+	});
+
+	$( ".signed_in_li_machines_o" ).draggable({ 
+		containment: "#index_salles",
+		scroll: true, 
+		scrollSpeed: 10,
+		revert: true,
+		cursor: 'move',	
+		zIndex: 10,
+		start: function(event, ui) {		
+			$(this).addClass("dontmoveme");
+			$(this).parent().droppable( "option", "accept", ":not(.dontmoveme)" );
+			$(this).parent().addClass("dontmovemediv") ;			
+		},
+		stop: function(event, ui) {		
+			$(this).removeClass("dontmoveme");
+			$(".dontmovemediv").droppable( "option", "accept", "*" );
+			$(".dontmovemediv").removeClass("dontmovemediv");
+			$(".signed_in_li_machines").css('top' , '0px ');
+		}
+	});
+
+	$( ".signed_in_ul_machines_o" ).droppable({
+		activeClass: "ui-state-default-perso",
+		hoverClass: "ui-state-hover-perso",
+		drop: function( event, ui ) {
+			$( ui.draggable ).addClass("deplaced");
+			$( this ).addClass("deplaced_ici");				
+				$(".deplaced").appendTo( ".deplaced_ici" );
+				$(".deplaced_ici").find(".separateur").appendTo( ".deplaced_ici" );
+				$(".deplaced").removeClass("deplaced");
+				$(".deplaced_ici").removeClass("deplaced_ici");
+				if ( $(".full_machine").index() == 1 ) {
+					$(".full_machine").removeClass('full_machine');
+					$("#amuse_toi").slideUp();
+				}	
+
+							
+		}
+	});
+	$( ".signed_in_ul_machines_ol" ).droppable({
+		activeClass: "ui-state-default-perso",
+		hoverClass: "ui-state-hover-perso",
+		drop: function( event, ui ) {
+			$( ui.draggable ).addClass("deplaced");
+			$( this ).addClass("deplaced_ici");				
+			if ( $(".full_machine").index() == -1 ) {
+				$(".deplaced_ici").addClass('full_machine');
+				$(this).droppable( "option", "accept", ":not(.dontmoveme)" );
+				$(".deplaced").appendTo( ".deplaced_ici" );
+				$(".deplaced_ici").find(".separateur").appendTo( ".deplaced_ici" );
+				$(".deplaced").removeClass("deplaced");
+				$(".deplaced_ici").removeClass("deplaced_ici");
+				$("#amuse_toi").slideDown();
+			}							
+		}
+	});
+
+	$('#pingonoff').iphoneStyle({
+		uncheckedLabel: 'off',
+		checkedLabel: 'on',
+		onChange: function(elem, value) {
+		value.toString();
+	}
+	});
+
+
+
+
+
+
+
+
+
+
+	$( "#slider_ram" ).slider({
+		value:0,
+			min: 0,
+			max: 100,
+			step: 1,
+			slide: function( event, ui ) {
+				$( "#amount_ram" ).html( ui.value + "%");
+			},
+			stop: function( event, ui ) {				
+			}
+	});
+	$( "#amount_ram" ).html( $("#slider_ram").slider("value")+"%");
+
+
+	$( "#slider_cpu" ).slider({
+		value:0,
+			min: 0,
+			max: 100,
+			step: 1,
+			slide: function( event, ui ) {
+				$( "#amount_cpu" ).html( ui.value + "%");
+			},
+			stop: function( event, ui ) {				
+			}
+	});
+	$( "#amount_cpu" ).html( $("#slider_cpu").slider("value")+"%");
+
+
 })

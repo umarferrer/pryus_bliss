@@ -20,20 +20,16 @@
 			</tr>
 		</table>
 	</div>
-	<div id="hide_salle">
-		
+	<div id="hide_salle">		
 		<table>
 			<tr>
-				<td>
-
-
-					
+				<td>				
 					<div class="salles_incident ui-corner-all ui-widget-content">
 						<h3 class="ui-state-default">Machines</h3>								
-							<ul class="ul_machines_incident signed_in_ul_machines">	
+							<ul class="ul_machines_incident signed_in_ul_machines_o">	
 								<% @salles.each do |s| %>	
 									<% s.machines.each do |m| %>									
-										<li class="signed_in_li_machines" >							
+										<li class="signed_in_li_machines_o" >							
 											<table class="table_machines_incident">
 												<tr>
 													<td>
@@ -53,42 +49,58 @@
 							<hr class="separateur" />
 						</ul>							
 					</div>
-					
-
 				</td>
 				<td>
-		
-
 					<div class="salles_incident salles_incident_conf ui-corner-all ui-widget-content">
-						<h3 class="ui-state-default ">Machine a configurer</h3>	
-							<ul class="ul_machines signed_in_ul_machines">	
-
+						<h3 class="ui-state-default ">Machine a experimenter</h3>	
+							<ul class="ul_machines_dragme signed_in_ul_machines_ol">
 								<hr class="separateur" />
 							</ul>
 					</div>
+					<div id="amuse_toi" class="salles_incident salles_incident_conf ui-corner-all ui-widget-content">
+						<h3 class="ui-state-default ">Fais-moi mal !</h3>	
+						<table id="faitmoimal">
+							<tr>
+								<td class="montemoi">
+									Turn the machine to :
+								</td>							
+								<td class="montemoi">
+									<input id="pingonoff" checked="checked" type="checkbox" id="on_off" />
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="montemoi">
+									Memory usage :
+									<span id="amount_ram"></span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" >
+									<div id="slider_ram"></div>
+								</td>
+							</tr>	
+							<tr>
+								<td colspan="2" class="montemoi">
+									Cpu usage :
+									<span id="amount_cpu"></span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" >
+									<div id="slider_cpu"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="montemoi">
+								</td>
+							</tr>
 
-
-
-
-
-
-
-
-
+						</table>
+					</div>
 				</td>
 			</tr>
 		</table>
-
-
-
-
-
-
-
-
-
-
-
 	</div>
 
 </div>
+
