@@ -18,7 +18,6 @@ def view
         @id = params["gr_id"]
         case @mode
             when "inserted"
-                @salt=secure_hach("#{Time.now.utc}--#{hached_password}")
                 user = Administrateur.new
                 user.nom_admin = "nom_admin"
                 user.prenom_admin = "prenom_admin"

@@ -1,3 +1,16 @@
+<% @o=0 %>
+<% @salle.each do |ss| %>
+	 <% if ss.id == @machine.salle.id %>
+	 	<% @active_menu=@o %>
+	 <% else %>
+	 	<% @o+=1 %>
+	 <% end %>
+<% end %>
+
+<script language="Javascript"> 
+	$(document).ready(function(){ $("#index_menu").accordion({active:<%=@active_menu%>});})
+</script> 
+
 <table id="index_table" >
 	<tr>
 		<td>
@@ -13,48 +26,7 @@
 			</div>
 		</td>
 		<td>
-
-
-
-<% @salle.each do |saller| %>
-	 <% if saller.id == @machine.salle.id %>
-	 	<% @i %>
-	 <% else %>
-	 	
-	 	<%= saller.id %> | <%= @machine.salle.id %> //
-	 	<% @i+=1 %>
-	 <% end %>
-<% end %>
-
-			<div id="detaille_machines" salle="<%= @i %>" >
-			<%= @i %>
-					
-
-						
-							
-
-
-
-							<SCRIPT language="Javascript"> 
-
-							$(document).ready(function() {
-
-/*
-								$( "#index_menu" ).accordion( "destroy" );
-								$( "#index_menu" ).accordion({
-									collapsible: true,
-									active: $("#blblb").html("salle"),			
-								});	
-*/
-							})
-							//alert($("#detaille_machines").attr('salle'));
-							</SCRIPT> 
-
-
-
-
-
-
+			<div id="detaille_machines" >
 				<h2>Historique des incidents : <%= @machine.nom_machine %></h2>
 				<div>
 					<p>
@@ -84,25 +56,6 @@
 						<td>Description</td>
 					</tr>
 				</table>
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			</div>
 		</td>
 	</tr>

@@ -12,7 +12,6 @@ class PagesController < ApplicationController
 		if !@machine.nil?
 			@salles=Salle.all
 			@salle=Salle.all
-			@i=0
 		else
 			render :inline => "pasok"
 		end
