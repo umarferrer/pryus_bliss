@@ -1,0 +1,94 @@
+<div>
+	<div class="salles_incident_head ui-corner-all ui-widget-content">
+		<h3 class="ui-state-default" >Veuillez definir les seuils</h3>
+		<table id="seuils" class="margin_auto" >
+			<tr>
+				<td>
+					<label class="orange" for="warning">W</label>
+				</td>
+				<td>
+					<label class="red" for="critical">C</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" id="warning" size="2" maxlength="2">
+				</td>
+				<td>
+					<input type="text" id="critical" size="2" maxlength="2">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="hide_salle">
+		
+		<table>
+			<tr>
+				<td>
+
+
+					
+					<div class="salles_incident ui-corner-all ui-widget-content">
+						<h3 class="ui-state-default">Machines</h3>								
+							<ul class="ul_machines_incident signed_in_ul_machines">	
+								<% @salles.each do |s| %>	
+									<% s.machines.each do |m| %>									
+										<li class="signed_in_li_machines" >							
+											<table class="table_machines_incident">
+												<tr>
+													<td>
+														<div class="infobull">
+															<%= image_tag("machine.png", :alt=> m.nom_machine ) %>
+															<p>Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td><%= m.nom_machine %></td>
+												</tr>
+											</table>
+										</li>								
+									<% end %>
+								<% end %>									
+							<hr class="separateur" />
+						</ul>							
+					</div>
+					
+
+				</td>
+				<td>
+		
+
+					<div class="salles_incident salles_incident_conf ui-corner-all ui-widget-content">
+						<h3 class="ui-state-default ">Machine a configurer</h3>	
+							<ul class="ul_machines signed_in_ul_machines">	
+
+								<hr class="separateur" />
+							</ul>
+					</div>
+
+
+
+
+
+
+
+
+
+				</td>
+			</tr>
+		</table>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+</div>

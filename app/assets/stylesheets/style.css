@@ -257,7 +257,79 @@ a:visited {
 	text-align: left;
 }
 
+/* ****************************************************
 
+			Pages/incidents.html.erb 
+						
+**************************************************** */
+#incidents {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.margin_auto {
+	margin:auto;
+}
+#seuils td {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+#hide_salle {
+	/*display:none;*/
+	margin-top: 20px;
+}
+#hide_salle td{
+	/*display:none;*/
+	vertical-align:baseline;
+}
+.salles_incident_head {
+	margin: auto;
+	width: 200px; 
+	margin-top: 20px; 
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+}
+.orange {
+	color :orange;
+}
+.red {
+	color:red;
+}
+.salles_incident_head h3 {
+	margin-top: 0px;
+	border-width: 0px 0px 1px;
+	border-style: solid;
+	padding: 7px 10px;
+	font-weight: bold !important;
+}
+.salles_incident {
+	margin: 0px 0px 10px 10px;
+	width: 288px;
+}
+.salles_incident h3 {
+	margin-top: 0px;
+	border-width: 0px 0px 1px;
+	border-style: solid;
+	padding: 7px 10px;
+}
+.ul_machines_incident {
+	list-style: none;
+	padding: 10px;
+}
+.ul_machines_incident table {
+	margin:auto;
+}
+.ul_machines_incident li{
+	width: 89px;	
+	float:left;
+	display: inline;
+}
+.table_machines_incident {
+	text-align:center;
+	margin:auto;	 
+}
+.salles_incident_conf {
+	width: 480px;	
+}
 
 /* ****************************************************
 

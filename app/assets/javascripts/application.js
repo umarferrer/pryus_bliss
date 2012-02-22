@@ -80,6 +80,7 @@ $(document).ready(function() {
 			});						
 		}
 	});
+
 	function refresh_menu() {		
 		$.ajax({
 				url: "/update_menu" ,
@@ -94,4 +95,13 @@ $(document).ready(function() {
 				}			
 		});
 	};
+
+	$('#seuils input').keyup(function() {
+		if ( $("#warning").val() != "" && $("#critical").val() != "" && $.isNumeric( $("#warning").val() ) && $.isNumeric( $("#critical").val() ) ) {
+			$("#hide_salle").slideDown();
+		}
+		else {
+			$("#hide_salle").slideUp();
+		}
+	});
 })

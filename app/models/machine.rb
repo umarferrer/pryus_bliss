@@ -1,5 +1,7 @@
 class Machine < ActiveRecord::Base
   belongs_to :salle
+  has_many :incidents, :dependent => :destroy
+
   attr_accessible :nom_machine
   attr_accessible :ip_machine
   attr_accessible :salle_id

@@ -11,17 +11,19 @@ class PagesController < ApplicationController
 		@machine=Machine.find_by_id(params[:id_machine])
 		if !@machine.nil?
 			@salles=Salle.all
-			@salle=Salle.all
 		else
 			render :inline => "pasok"
 		end
-
 	end
 
 	def update_menu
 		@salles=Salle.all
 		render 'pages/_index_menu.html.erb', :layout => false
 	end
+
+    def incidents
+        @salles=Salle.all
+    end
 
 	def view
     end

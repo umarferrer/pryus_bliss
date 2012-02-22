@@ -1,15 +1,8 @@
 PryusBliss::Application.routes.draw do
 
-
-
-  
- 
-
-  
-
-
   root :to => 'pages#index'
   match '/machine_historique/:id_machine' => 'pages#machine_historique'
+  match '/incidents', :to => 'pages#incidents'
 
   resources :incidents
   resources :administrateurs
@@ -25,6 +18,8 @@ PryusBliss::Application.routes.draw do
   get "sessions/new"
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'
+
+
 
   #Ajax
   match '/update_machine',  :to => 'machines#update_machine'
