@@ -21,24 +21,16 @@ $(document).ready(function() {
 		title:"Identification",
 		width :265,
 	});
-
-
 	$( "#index_menu" ).accordion({
 		collapsible: true,
 		active: false,
 	});
 
-	// $('.table_machines').hover(function(){
-	// 	$(this).find(".infobull #ipdesc").fadeIn();
-	// }, function(){
-	// 	$(".infobull #ipdesc").hide();
-	// });
-	// $('.table_machines').hover(function(){
-	// 	$(this).find(".infobull #ipdescerr").fadeIn();
-	// }, function(){
-	// 	$(".infobull #ipdescerr").hide();
-	// });
-
+	$('.table_machines').hover(function(){
+		$(this).find(".infobull .ipdesc").fadeIn();
+	}, function(){
+		$(".infobull .ipdesc").hide();
+	});
 	$( ".signed_in_li_machines" ).draggable({ 
 		containment: "#index_salles",
 		scroll: true, 
@@ -58,7 +50,6 @@ $(document).ready(function() {
 			$(".signed_in_li_machines").css('top' , '0px ');
 		}
 	});
-
 	$( ".signed_in_ul_machines" ).droppable({
 		activeClass: "ui-state-default-perso",
 		hoverClass: "ui-state-hover-perso",
@@ -85,7 +76,6 @@ $(document).ready(function() {
 			});						
 		}
 	});
-
 	function refresh_menu() {		
 		$.ajax({
 				url: "/update_menu" ,
@@ -100,7 +90,6 @@ $(document).ready(function() {
 				}			
 		});
 	};
-
 	$('#seuils input').keyup(function() {
 		if ( $("#warning").val() != "" && $("#critical").val() != "" && $.isNumeric( $("#warning").val() ) && $.isNumeric( $("#critical").val() ) ) {
 			$("#hide_salle").slideDown();
@@ -109,13 +98,11 @@ $(document).ready(function() {
 			$("#hide_salle").slideUp();
 		}
 	});
-
 	$('.table_machines_incident').hover(function(){
 		$(this).find(".infobull p").fadeIn();
 	}, function(){
 		$(".infobull p").hide();
 	});
-
 	$( ".signed_in_li_machines_o" ).draggable({ 
 		containment: "#index_salles",
 		scroll: true, 
@@ -135,7 +122,6 @@ $(document).ready(function() {
 			$(".signed_in_li_machines").css('top' , '0px ');
 		}
 	});
-
 	$( ".signed_in_ul_machines_o" ).droppable({
 		activeClass: "ui-state-default-perso",
 		hoverClass: "ui-state-hover-perso",
@@ -261,7 +247,7 @@ $(document).ready(function() {
 
 				if ( ui.value >= $("#critical").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"/Memory",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"%/Memory",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
@@ -286,7 +272,7 @@ $(document).ready(function() {
 				}
 				else if ( ui.value >= $("#warning").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"/Memory",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"%/Memory",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
@@ -340,7 +326,7 @@ $(document).ready(function() {
 			stop: function( event, ui ) {				
 				if ( ui.value >= $("#critical").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"/Cpu",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"%/Cpu",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
@@ -365,7 +351,7 @@ $(document).ready(function() {
 				}
 				else if ( ui.value >= $("#warning").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"/Cpu",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"%/Cpu",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
@@ -409,10 +395,8 @@ $(document).ready(function() {
 			}
 	});
 	$( "#amount_cpu" ).html( $("#slider_cpu").slider("value")+"%");
-
 	$('#hide_salle').hide();
 	$('#amuse_toi').hide();
-
 	function update_li(statut) {
 		$.ajax({
 			url :"/etat_machine/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine"),
@@ -437,4 +421,8 @@ $(document).ready(function() {
 			}			
 		});
 	}
+	$(".li_machines").dblclick(function() {
+		 
+		$(location).attr('href',"/machine_historique/"+$( this ).attr('id_machine') );
+	});
 })

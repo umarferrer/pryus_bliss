@@ -9,66 +9,45 @@
 			<% s.machines.each do |m| %>	
 			
 			<% if signed_in? %>
-				<li class="li_machines signed_in_li_machines" id_machine=<%= m.id %> >
+				<li class="li_machines signed_in_li_machines" id_machine=<%= m.id %>  >
 			<% else %>
-				<li class="li_machines" >
+				<li class="li_machines" id_machine=<%= m.id %> >
 			<% end %>	
-				<table class="table_machines" >
-										
+				<table class="table_machines" >										
 					<% m.etat_machine %><% m.etat_service_machine %>
 					<tr>
 						<td>
 							<div class="infobull">
 								<% if m.etat_machine == "0" and m.etat_service_machine == "0" %>
 									<%= image_tag("machine00.png", :alt=> m.nom_machine ) %>
-									<p id="ipdescerr">
-										<%= m.incidents.last.proprietes_supplementaires %>
-										<%= m.incidents.last.description_incident %>
+									<p class="ipdesc">
+										<%= m.incidents.last(2).first.proprietes_supplementaires %>: 
+										<%= m.incidents.last(2).first.description_incident %>								
 										<br />
-										<%= m.incidents.last(2).first.proprietes_supplementaires %>
-										<%= m.incidents.last(2).first.description_incident %>
+										<%= m.incidents.last.proprietes_supplementaires %>: 
+										<%= m.incidents.last.description_incident %>
 										
 									</p>
-
+									<p class="ipdescerr ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 								<% elsif m.etat_machine == "1" and m.etat_service_machine == "0" %>
 									<%= image_tag("machine10.png", :alt=> m.nom_machine ) %>
-									<p id="ipdescerr">
-										<%= m.incidents.last.proprietes_supplementaires %>
+									<p class="ipdesc">
+										<%= m.incidents.last.proprietes_supplementaires %>:
 										<%= m.incidents.last.description_incident %>
 									</p>
-
-
+									<p class="ipdescerr ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 								<% elsif m.etat_machine == "0" and m.etat_service_machine == "1" %>
 									<%= image_tag("machine01.png", :alt=> m.nom_machine ) %>
-									<p id="ipdescerr">
-										<%= m.incidents.last.proprietes_supplementaires %>
+									<p class="ipdesc">
+										<%= m.incidents.last.proprietes_supplementaires %>:
 										<%= m.incidents.last.description_incident %>
 									</p>
-
-
+									<p class="ipdescerr ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 								<% else %>
 									<%= image_tag("machine.png", :alt=> m.nom_machine ) %> 
-									
-
-
+									<p class="ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 								<% end %>
-
-
-
-
-
-
-								
-
-
-
-
-
-
-
-								<p id="ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 							</div>
-
 						</td>
 					</tr>
 					<tr>
