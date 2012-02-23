@@ -20,25 +20,22 @@
     <%= f.text_field :ip_machine %>
   </div>
   <div class="field">
-	<%= f.label :salle_id %> <%= f.select :salle_id, @salles.map{|e| [e.nom_salle,e.id]} %>
+	<%= f.label :salle_id %> <br /><%= f.select :salle_id, @salles.map{|e| [e.nom_salle,e.id]} %>
   </div>
   <div class="field">
-    <%= f.label :description_machine %><br />
+    <%= f.label :description %><br />
     <%= f.text_field :description_machine %>
   </div>
   <div class="field">
-    <%= f.label :date_crea_machine %><br />
-    <%= f.text_field :date_crea_machine %>
+    <%= f.label :date_de_creation %><br />
+    <%= f.text_field :date_crea_machine %>   <%= f.label :"(ex:10/10/2000)" %><br />
   </div>
-  <div class="field">
-    <%= f.label :etat_machine %><br />
-    <%= f.text_field :etat_machine %>
-  </div>
-  <div class="field">
-    <%= f.label :etat_service_machine %><br />
-    <%= f.text_field :etat_service_machine %>
-  </div>
+
+  
   <div class="actions">
-    <%= f.submit %>
+    <br />
+	<%= image_submit_tag 'valider.jpg' %><br />
+	
   </div>
+
 <% end %>

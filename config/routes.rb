@@ -15,8 +15,17 @@ PryusBliss::Application.routes.draw do
   resources :salles
   resources :sessions, :only => [:new, :create, :destroy]
 
+  match '/forgot_password', :to => 'administrateurs#forgot_password'
+  match '/new_password_request', :to => 'administrateurs#new_password_request'
+  match '/change_password_request', :to => 'administrateurs#change_password_request'
+  match '/change_password_process', :to => 'administrateurs#change_password_process'
+  match '/ping/:machine_id', :to => "machines#ping"
+  match '/graph/:idmachine', :to => "charts#chart"
+  match '/xml/:idmachine', :to => "charts#xml"
+  match '/all_ping', :to => "machines#all_ping"
+  
   match '/signout',  :to => 'sessions#destroy'
-
+  match '/signin',  :to => 'sessions#new'
 
 
   # The priority is based upon order of creation:

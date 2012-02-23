@@ -1,9 +1,10 @@
 class MachinesController < ApplicationController
+require 'ping' 
   # GET /machines
   # GET /machines.json
   def index
     @machines = Machine.all
-
+	
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @machines }
@@ -47,17 +48,24 @@ class MachinesController < ApplicationController
   # POST /machines.json
   def create
     @machine = Machine.new(params[:machine])
-	@salles = Salle.all
+	@salles = Salle.find(params[:machine][:salle_id])
+	@machine.etat_machine='1'
+	@machine.etat_service_machine='1'
+	
 
     respond_to do |format|
       if @machine.save
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render json: @machine, status: :created, location: @machine }
+		
+		@salles.nbre_machine = @salles.nbre_machine + 1
+		@salles.update_attributes(params[:nbre_machine])
       else
         format.html { render action: "new" }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
     end
+	
   end
 
   # PUT /machines/1
@@ -81,11 +89,48 @@ class MachinesController < ApplicationController
   # DELETE /machines/1.json
   def destroy
     @machine = Machine.find(params[:id])
+	@salles = Salle.find @machine.salle_id
+	@salles.nbre_machine = @salles.nbre_machine - 1
+	@salles.update_attributes(params[:nbre_machine])
     @machine.destroy
-
+	
     respond_to do |format|
       format.html { redirect_to machines_url }
       format.json { head :ok }
     end
   end
+  
+  #before_filter :authenticate, :only => [:create , :new, :update, :destroy]
+  
+  def ping
+	@machine = Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+			render :text => "La machines n'&eacute;xiste pas"
+	else
+		  if Ping.pingecho(@machine.ip_machine, 2, 'echo')
+			render :text => "1"
+			@machine.etat_machine='1'
+			@machine.save!
+			puts "Reply from @machine.ip_machine"
+		  else
+			render :text => "0"
+			@machine.etat_machine='0'
+			@machine.save!
+			puts "@machine.ip_machine timed out"
+		  end
+	end
 end
+def all_ping
+	@machine = Machine.all
+	@machine.each do |mach|
+		if Ping.pingecho(mach.ip_machine, 2, 'echo')
+			mach.etat_machine='1'
+			mach.save!
+		else
+			mach.etat_machine='0'
+			mach.save!
+		end
+	end
+end
+end
+

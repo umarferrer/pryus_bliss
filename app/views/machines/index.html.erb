@@ -1,38 +1,38 @@
 <html>
 <body>
-<h1 style="color:red;">Listing machines</h1>
+<h1 style="color:#0b8dc1;">Listing machines</h1>
 <br>
-<table border="1 solid black">
+<table style="border:3px solid #0b8dc1">
   <tr>
-    <th> Nom machine </th>
-    <th> Ip </th>
-    <th> salle </th>
-    <th> Description </th>
-    <th> Date de cr&eacute;ation </th>
-    <th> Etat </th>
-    <th> Etat services </th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Nom machine </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Ip </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> salle </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Description </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Date de cr&eacute;ation </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Etat </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"> Etat services </th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"></th>
+    <th style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"></th>
+    <th style="border-bottom:1px solid #0b8dc1"></th>
   </tr>
 
 <% @machines.each do |machine| %>
 
   <tr>
-    <td><%= machine.nom_machine %></td>
-    <td><%= machine.ip_machine %></td>
-    <td><%= machine.salle_id %> </td>
-    <td><%= machine.description_machine %></td>
-    <td><%= machine.date_crea_machine %></td>
-    <td><%= machine.etat_machine %></td>
-    <td><%= machine.etat_service_machine %></td>
-    <td><%= link_to 'Afficher', machine %></td>
-    <td><%= link_to 'Modifier', edit_machine_path(machine) %></td>
-    <td><%= link_to 'Supprimer', machine, confirm: 'Are you sure?', method: :delete %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.nom_machine %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.ip_machine %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.salle_id %> </td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.description_machine %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.date_crea_machine %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.etat_machine %><%= "*" %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= machine.etat_service_machine %><%= "*" %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= link_to 'Afficher', machine %></td>
+    <td style="border-bottom:1px solid #0b8dc1; border-right:1px solid #0b8dc1; padding:0px; margin:0px"><%= link_to 'Modifier', edit_machine_path(machine) %></td>
+    <td style="border-bottom:1px solid #0b8dc1; padding:0px; margin:0px"><%= link_to 'Supprimer', machine, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
+<br /> <%= "* la valeure 1 correspond a OK (pas de probleme !) et 0 a KO (probleme !) " %><br />
 <br />
 
 <%= link_to 'Ajouter Machine', new_machine_path %>
