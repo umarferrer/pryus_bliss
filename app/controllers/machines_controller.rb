@@ -218,4 +218,14 @@ end
 		end
 	end
   end
+
+  def etat_machine
+  	@machine=Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+		render :status => 500
+	else
+		render :inline => "#{@machine.etat_machine}+#{@machine.etat_service_machine}"
+	end
+  end
 end
+

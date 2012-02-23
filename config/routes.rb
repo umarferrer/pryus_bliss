@@ -32,6 +32,7 @@ PryusBliss::Application.routes.draw do
   match '/new_incident/:machine_id/:ping_service/:niveau/:description/:propriete', :to => 'machines#new_incident'
   match '/get_incident/:machine_id/:ping_service', :to => 'machines#get_incident'
   match '/update_incident/:machine_id/:ping_service', :to => 'machines#update_incident'
+  match '/etat_machine/:machine_id', :to => 'machines#etat_machine'
   match '/update_menu', :to => 'pages#update_menu'
 
 

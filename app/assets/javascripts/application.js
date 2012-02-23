@@ -137,16 +137,14 @@ $(document).ready(function() {
 		drop: function( event, ui ) {
 			$( ui.draggable ).addClass("deplaced");
 			$( this ).addClass("deplaced_ici");				
-				$(".deplaced").appendTo( ".deplaced_ici" );
-				$(".deplaced_ici").find(".separateur").appendTo( ".deplaced_ici" );
-				$(".deplaced").removeClass("deplaced");
-				$(".deplaced_ici").removeClass("deplaced_ici");
-				if ( $(".full_machine").index() == 1 ) {
-					$(".full_machine").removeClass('full_machine');
-					$("#amuse_toi").slideUp();
-				}	
-
-							
+			$(".deplaced").appendTo( ".deplaced_ici" );
+			$(".deplaced_ici").find(".separateur").appendTo( ".deplaced_ici" );
+			$(".deplaced").removeClass("deplaced");
+			$(".deplaced_ici").removeClass("deplaced_ici");
+			if ( $(".full_machine").index() == 1 ) {
+				$(".full_machine").removeClass('full_machine');
+				$("#amuse_toi").slideUp();
+			}
 		}
 	});
 	$( ".signed_in_ul_machines_ol" ).droppable({
@@ -176,11 +174,11 @@ $(document).ready(function() {
 						url :"/get_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Memory",
 						success:function(data){
 							if ( data.search(/none/i) != -1 ) {
-								$( "#slider_ram" ).slider( "value" , 0 )
+								$( "#slider_ram" ).slider( "value" , 0 );
 								$( "#amount_ram" ).html( 0 + "%");
 							}
 							else {							
-								$( "#slider_ram" ).slider( "value" , data )
+								$( "#slider_ram" ).slider( "value" , data );
 								$( "#amount_ram" ).html( data + "%");
 							}
 						}			
@@ -189,20 +187,20 @@ $(document).ready(function() {
 						url :"/get_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Cpu",
 						success:function(data){
 							if ( data.search(/none/i) != -1 ) {
-								$( "#slider_cpu" ).slider( "value" , 0 )
+								$( "#slider_cpu" ).slider( "value" , 0 );
 								$( "#amount_cpu" ).html( 0 + "%");
 							}
 							else {							
-								$( "#slider_cpu" ).slider( "value" , data )
+								$( "#slider_cpu" ).slider( "value" , data );
 								$( "#amount_cpu" ).html( data + "%");
 							}
 						}			
 					});
 				}
 				else if ( $(".salles_incident_conf #nom_de_la_machine").attr("service") == "1" ){
-					$( "#slider_cpu" ).slider( "value" , 0 )
+					$( "#slider_cpu" ).slider( "value" , 0 );
 					$( "#amount_cpu" ).html( 0 + "%");
-					$( "#slider_ram" ).slider( "value" , 0 )
+					$( "#slider_ram" ).slider( "value" , 0 );
 					$( "#amount_ram" ).html( 0 + "%");					
 				}
 			}							
@@ -211,15 +209,8 @@ $(document).ready(function() {
 	$('#pingonoff').iphoneStyle({
 		uncheckedLabel: 'off',
 		checkedLabel: 'on',
-		onChange: function(elem, value) {			
-			if ( value.toString() == "true" ) {	
-					
-					
-					
-					
-				
-					
-					
+		onChange: function(elem, value) {	
+			if ( value.toString() == "true" ) {		
 				$.ajax({
 				url :"/update_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Ping",
 				success:function(data){
@@ -228,22 +219,12 @@ $(document).ready(function() {
 					else {
 						alert("Oups");
 					}
+					update_li();
 				},
 				error:function(data){
 					alert("Oups");
 				}			
-				});	
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-						
+				});			
 			}
 			else if ( value.toString() == "false" ) {
 				$.ajax({
@@ -254,6 +235,7 @@ $(document).ready(function() {
 						else {
 							alert("Oups");
 						}
+						update_li();
 					},
 					error:function(data){
 						alert("Oups");
@@ -274,80 +256,71 @@ $(document).ready(function() {
 
 				if ( ui.value >= $("#critical").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"%/Memory",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"/Memory",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
 								alert("Conflit avec Cpu");
-								$( "#slider_ram" ).slider( "value" , 0 )
+								$( "#slider_ram" ).slider( "value" , 0 );
 								$( "#amount_ram" ).html( 0 + "%");
 							}
 							else {
 								alert("Oups");
-								$( "#slider_ram" ).slider( "value" , 0 )
+								$( "#slider_ram" ).slider( "value" , 0 );
 								$( "#amount_ram" ).html( 0 + "%");
 							}
+							update_li();
 						},
 						error:function(data){
 							alert("Oups");
-							$( "#slider_ram" ).slider( "value" , 0 )
+							$( "#slider_ram" ).slider( "value" , 0 );
 							$( "#amount_ram" ).html( 0 + "%");
+							update_li();
 						}			
 					});						
 				}
 				else if ( ui.value >= $("#warning").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"%/Memory",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"/Memory",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
 								alert("Conflit avec Cpu");
-								$( "#slider_ram" ).slider( "value" , 0 )
-								$( "#amount_ram" ).html( 0 + "%")
+								$( "#slider_ram" ).slider( "value" , 0 );
+								$( "#amount_ram" ).html( 0 + "%");
 							}
 							else {
 								alert("Oups");
-								$( "#slider_ram" ).slider( "value" , 0 )
+								$( "#slider_ram" ).slider( "value" , 0 );
 								$( "#amount_ram" ).html( 0 + "%");
 							}
+							update_li();
 						},
 						error:function(data){
 							alert("Oups");
-							$( "#slider_ram" ).slider( "value" , 0 )
+							$( "#slider_ram" ).slider( "value" , 0 );
 							$( "#amount_ram" ).html( 0 + "%");
+							update_li();
 						}			
 					});	
 				}
-				else {
-						
-
-
-
-						$.ajax({
-							url :"/update_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Memory",
-							success:function(data){
-								if ( data.search(/ajaxok/i) != -1 ) {}
-								else if ( data.search(/none/i) != -1 ) {}
-								else {
-									alert("Oups");
-								}
-							},
-							error:function(data){
+				else {	
+					$.ajax({
+						url :"/update_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Memory",
+						success:function(data){
+							if ( data.search(/ajaxok/i) != -1 ) {}
+							else if ( data.search(/none/i) != -1 ) {}
+							else {
 								alert("Oups");
-							}			
-						});	
-						
-
-
-
-
-
-
-
-
-
-					
-				}							
+							}
+							update_li();
+						},
+						error:function(data){
+							alert("Oups");
+							update_li();
+						}			
+					});	
+				}											
 			}
 	});
 	$( "#amount_ram" ).html( $("#slider_ram").slider("value")+"%");
@@ -359,95 +332,104 @@ $(document).ready(function() {
 			slide: function( event, ui ) {
 				$( "#amount_cpu" ).html( ui.value + "%");
 			},
-			stop: function( event, ui ) {	
-			
+			stop: function( event, ui ) {				
 				if ( ui.value >= $("#critical").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"%/Cpu",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/C/"+ui.value+"/Cpu",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
 								alert("Conflit avec Memory!");
 								$( "#slider_cpu" ).slider( "value" , 0 )
-								$( "#amount_cpu" ).html( 0 + "%")
+								$( "#amount_cpu" ).html( 0 + "%");
 							}
 							else {
 								alert("Oups");
 								$( "#slider_cpu" ).slider( "value" , 0 )
-								$( "#amount_cpu" ).html( 0 + "%")
+								$( "#amount_cpu" ).html( 0 + "%");
 							}
+							update_li();
 						},
 						error:function(data){
 							alert("Oups");
 							$( "#slider_cpu" ).slider( "value" , 0 )
-							$( "#amount_cpu" ).html( 0 + "%")
+							$( "#amount_cpu" ).html( 0 + "%");
+							update_li();
 						}			
-					});	
-					
+					});						
 				}
 				else if ( ui.value >= $("#warning").val() ) {
 					$.ajax({
-						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"%/Cpu",
+						url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/2/W/"+ui.value+"/Cpu",
 						success:function(data){
 							if ( data.search(/ajaxok/i) != -1 ) {}
 							else if ( data.search(/already/i) != -1 ) {
 								alert("Conflit avec Memory");
-								$( "#slider_cpu" ).slider( "value" , 0 )
-								$( "#amount_cpu" ).html( 0 + "%")
+								$( "#slider_cpu" ).slider( "value" , 0 );
+								$( "#amount_cpu" ).html( 0 + "%");
 							}
 							else {
 								alert("Oups");
-								$( "#slider_cpu" ).slider( "value" , 0 )
-								$( "#amount_cpu" ).html( 0 + "%")
+								$( "#slider_cpu" ).slider( "value" , 0 );
+								$( "#amount_cpu" ).html( 0 + "%");
 							}
+							update_li();
 						},
 						error:function(data){
 							alert("Oups");
-							$( "#slider_cpu" ).slider( "value" , 0 )
-							$( "#amount_cpu" ).html( 0 + "%")
+							$( "#slider_cpu" ).slider( "value" , 0 );
+							$( "#amount_cpu" ).html( 0 + "%");
+							update_li();
 						}			
 					});	
 				}
 				else {
-					
 
-
-
-
-
-						$.ajax({
-							url :"/update_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Memory",
-							success:function(data){
-								if ( data.search(/ajaxok/i) != -1 ) {}
-								else if ( data.search(/none/i) != -1 ) {}
-								else {
-									alert("Oups");
-								}
-							},
-							error:function(data){
+					$.ajax({
+						url :"/update_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/Memory",
+						success:function(data){
+							if ( data.search(/ajaxok/i) != -1 ) {}
+							else if ( data.search(/none/i) != -1 ) {}
+							else {
 								alert("Oups");
-							}			
-						});	
-
-
-
-
-
-
-
-
-
-
-
-
-
+							}
+							update_li();
+						},
+						error:function(data){
+							alert("Oups");
+							update_li();
+						}			
+					});	
 				}			
 			}
 	});
 	$( "#amount_cpu" ).html( $("#slider_cpu").slider("value")+"%");
 
+	$('#hide_salle').hide();
+	$('#amuse_toi').hide();
 
+	function update_li(statut) {
+		$.ajax({
+			url :"/etat_machine/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine"),
+			success:function(data){			
+				substr = data.split('+');
+				if ( substr[0]=="0" ) {
+					$(".salles_incident_conf #nom_de_la_machine").attr("ping",substr[0]);
+				}
+				else if ( substr[0]=="1" ) {
+					$(".salles_incident_conf #nom_de_la_machine").attr("ping",substr[0]);
+				}
 
-	
-
+				if ( substr[1]=="0" ) {
+					$(".salles_incident_conf #nom_de_la_machine").attr("service",substr[1]);				
+				}
+				else if ( substr[1]=="1" ) {
+					$(".salles_incident_conf #nom_de_la_machine").attr("service",substr[1]);				
+				}
+			},
+			error:function(data){
+				alert("Oups");
+			}			
+		});
+	}
 })
