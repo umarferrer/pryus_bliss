@@ -1,8 +1,7 @@
 PryusBliss::Application.routes.draw do
 
   root :to => 'pages#index'
-  match '/machine_historique/:id_machine' => 'pages#machine_historique'
-  match '/incidents', :to => 'pages#incidents'
+  
 
   resources :incidents
   resources :administrateurs
@@ -15,18 +14,24 @@ PryusBliss::Application.routes.draw do
   match '/change_password_request', :to => 'administrateurs#change_password_request'
   match '/change_password_process', :to => 'administrateurs#change_password_process'
   match '/ping/:machine_id', :to => "machines#ping"
+  match '/all_ping', :to => "machines#all_ping"
   match '/graph/:idmachine', :to => "charts#chart"
   match '/xml/:idmachine', :to => "charts#xml"
-  match '/all_ping', :to => "machines#all_ping"
-
+  match '/machine_historique/:id_machine' => 'pages#machine_historique'
+  match '/incident', :to => 'pages#incidents'
   get "sessions/new"
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'
+
+  
 
 
 
   #Ajax
   match '/update_machine',  :to => 'machines#update_machine'
+  match '/new_incident/:machine_id/:ping_service/:niveau/:description/:propriete', :to => 'machines#new_incident'
+  match '/get_incident/:machine_id/:ping_service', :to => 'machines#get_incident'
+  match '/update_incident/:machine_id/:ping_service', :to => 'machines#update_incident'
   match '/update_menu', :to => 'pages#update_menu'
 
 

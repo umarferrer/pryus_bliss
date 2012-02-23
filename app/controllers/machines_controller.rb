@@ -1,6 +1,6 @@
 class MachinesController < ApplicationController
 require 'ping' 
-  before_filter :authenticate, :only => :update_machine
+  before_filter :authenticate, :only => [:update_machine , :new_incident, :update_incident]
   # GET /machines
   # GET /machines.json
   def index
@@ -130,5 +130,92 @@ end
         render :inline => "404salle"
       end
     end
+  end
+
+  def new_incident 
+	params[:description]=params[:description].tr("_", " ")
+	@machine=Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+		 render :status => 500
+	else
+		# if  = ping
+		if params[:ping_service] == "1"
+			# if deja probleme de ping
+			if @machine.etat_machine == "0"
+				render :inline => "already"
+			elsif @machine.etat_machine == "1"
+				@machine.update_attributes!(:etat_machine => "0")
+				@machine.incidents.create!(:statut_incident => "0",
+				:niveau_incident=> "C",
+			 	:description_incident => params[:description],
+			 	:proprietes_supplementaires => params[:propriete])
+			 	render :inline => "ajaxok"
+			else
+				render :status => 500
+			end			
+		# if = service[memory or cpu]
+		elsif params[:ping_service] == "2"
+			# if deja un probleme ?
+			if @machine.etat_service_machine == "0"
+				# met a jour la valeur de la ram ou cpu
+				@inci=@machine.incidents.find_by_statut_incident_and_proprietes_supplementaires("0",params[:propriete])
+				if !@inci.nil?
+					@inci.update_attributes!(:description_incident => params[:description], :niveau_incident => params[:niveau])
+					render :inline => "ajaxok"				
+				# exemple : on cree W en ram et on le passe en C, ensuite on va sur cpu et on veut le passe en W ou C marchera pas
+				elsif @inci.nil? 
+					render :inline => "already"
+				end
+			# Si nouveau pas de probleme avant
+			elsif @machine.etat_service_machine == "1"
+				@machine.update_attributes!(:etat_service_machine => "0")
+				@machine.incidents.create!(:statut_incident => "0",
+				:niveau_incident=> params[:niveau],
+			 	:description_incident => params[:description],
+			 	:proprietes_supplementaires => params[:propriete])
+			 	render :inline => "ajaxok"
+			else
+				render :status => 500
+			end			
+		else
+			render :status => 500			
+		end
+	end
+  end
+
+  def get_incident
+  	@machine=Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+		render :status => 500
+	else
+		@inci=@machine.incidents.find_by_statut_incident_and_proprietes_supplementaires("0",params[:ping_service])
+		if @inci.nil?
+			render :inline => "none"
+		else
+			render :inline => @inci.description_incident
+		end
+	end
+  end
+
+  def update_incident
+  	@machine=Machine.find_by_id(params[:machine_id])
+	if @machine.nil?
+		render :status => 500
+	else
+		if params[:ping_service] == "Ping"
+			@machine.update_attributes!(:etat_machine => "1")
+		elsif params[:ping_service] == "Memory"
+			@machine.update_attributes!(:etat_service_machine => "1")
+		elsif params[:ping_service] == "Cpu"
+			@machine.update_attributes!(:etat_service_machine => "1")
+		end
+		@inci=@machine.incidents.find_by_statut_incident_and_proprietes_supplementaires("0",params[:ping_service])
+		if @inci.nil?
+			render :inline => "none"
+		else
+			@inci.update_attributes!(:date_resolution_incident => Time.now.utc, :statut_incident => "1" )
+			render :inline => "ajaxok"
+		end
+	end
   end
 end

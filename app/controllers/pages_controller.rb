@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+    before_filter :authenticate, :only => :incidents
+    
 	def index
 		@titre="Index"
 		@salles=Salle.all

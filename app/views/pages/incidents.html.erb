@@ -29,7 +29,9 @@
 							<ul class="ul_machines_incident signed_in_ul_machines_o">	
 								<% @salles.each do |s| %>	
 									<% s.machines.each do |m| %>									
-										<li class="signed_in_li_machines_o" >							
+										<li class="signed_in_li_machines_o" machine="<%= m.id %>" id="nom_de_la_machine" 
+											ping="<%= m.etat_machine %>" 
+											service="<%= m.etat_service_machine %>">							
 											<table class="table_machines_incident">
 												<tr>
 													<td>
@@ -103,4 +105,3 @@
 	</div>
 
 </div>
-
