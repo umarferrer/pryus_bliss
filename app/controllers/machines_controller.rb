@@ -4,6 +4,7 @@ require 'ping'
   # GET /machines.json
   def index
     @machines = Machine.all
+
 	
     respond_to do |format|
       format.html # index.html.erb
