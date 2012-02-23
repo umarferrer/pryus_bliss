@@ -43,14 +43,24 @@ require 'ping'
 		  end
 	end
 end
+
 def all_ping
 	@machine = Machine.all
 	@machine.each do |mach|
 		if Ping.pingecho(mach.ip_machine, 2, 'echo')
 			mach.etat_machine=1
 			mach.save!
+			r = Random.new
+			chart = Charts.new
+			chart.idmachine = mach.id
+			chart.delay = r.rand(0..200)
+			chart.save!
 		else
 			mach.etat_machine=0
+			chart = Charts.new
+			chart.idmachine = mach.id
+			chart.delay = 0
+			chart.save!
 			mach.save!
 		end
 	end
