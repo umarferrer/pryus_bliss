@@ -8,10 +8,7 @@ class CreateMachines < ActiveRecord::Migration
       t.string :date_crea_machine
       t.string :etat_machine
       t.string :etat_service_machine
-
       t.timestamps
     end
-    add_index :machine, :salle_id
-  end
-  
+  end  
 end

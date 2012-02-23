@@ -40,25 +40,61 @@
 					</p>
 					<p>
 						Etat machine :
+							<% if @machine.etat_machine == "1" %>
+								<span class="green">OK</span>
+							<% elsif @machine.etat_machine == "0" %>
+								<span class="red">Erreur</span>
+							<% end %>
 					</p>
 					<p>	
-						Etat service :
+						Etat service : 
+							<% if @machine.etat_service_machine == "1" %>
+								<span class="green">OK</span>
+							<% elsif @machine.etat_service_machine == "0" %>
+								<span class="red">Erreur</span>
+							<% end %>
 					</p>
-				</div>		
-
-				<table>
-					<tr>
-						<td>Date de debut</td>
-						<td>Date de resolution</td>
-						<td>Statut</td>
-						<td>Niveau</td>
-						<td>Propriete</td>
-						<td>Description</td>
-					</tr>
-				</table>
+				</div>					
 			</div>
 		</td>
 	</tr>
 </table>
+<div id="matabledemachine">
+	<table id="table_jqueryy">
+		<thead>
+			<tr>
+				<th>Date de debut</th>
+				<th>Date de resolution</th>
+				<th>Statut</th>
+				<th>Niveau</th>
+				<th>Propriete</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @machine.incidents.each do |m| %>
+			<tr>
+				<td><%= m.created_at %></td>
+				<td><%= m.date_resolution_incident %></td>
+				<td><% if m.statut_incident  == "1" %>
+						OK
+					<% elsif m.statut_incident == "0" %>
+						Erreur
+					<% end %>
+				</td>
+				<td><%= m.niveau_incident %></td>				
+				<td><%= m.description_incident %></td>
+				<td><%= m.proprietes_supplementaires %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+
+
 
 

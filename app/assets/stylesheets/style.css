@@ -181,12 +181,6 @@ a:visited {
 	margin: 0px 0px 10px 10px;
 	width: 288px;
 }
-.even {
-	float:left;
-}
-.odd {
-	float: left;
-}
 .salles h3 {
 	margin-top: 0px;
 	border-width: 0px 0px 1px;
@@ -262,6 +256,17 @@ a:visited {
 	padding-left: 10px;
 	text-align: left;
 }
+#matabledemachine {
+	width: 790px;
+	margin:auto;
+	margin-top: 20px;
+	text-align:left;
+}
+#table_jqueryy {
+	width:100%;
+}
+
+
 
 /* ****************************************************
 
@@ -297,6 +302,9 @@ a:visited {
 }
 .red {
 	color:red;
+}
+.green {
+	color:green;
 }
 .salles_incident_head h3 {
 	margin-top: 0px;
@@ -445,3 +453,4 @@ a:visited {
 	text-align: center;
 	margin-top:20px;
 }
+

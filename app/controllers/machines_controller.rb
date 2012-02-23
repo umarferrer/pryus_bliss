@@ -223,7 +223,7 @@ end
 		if @inci.nil?
 			render :inline => "none"
 		else
-			@inci.update_attributes!(:date_resolution_incident => Time.now.utc, :statut_incident => "1" )
+			@inci.update_attributes!(:date_resolution_incident => Time.now, :statut_incident => "1" )
 			render :inline => "ajaxok"
 		end
 	end

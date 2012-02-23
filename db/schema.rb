@@ -34,8 +34,7 @@ ActiveRecord::Schema.define(:version => 20120219201854) do
 
   create_table "incidents", :force => true do |t|
     t.integer  "machine_id"
-    t.string   "date_incident"
-    t.string   "date_resolution_incident"
+    t.datetime "date_resolution_incident"
     t.string   "statut_incident"
     t.string   "niveau_incident"
     t.string   "description_incident"
