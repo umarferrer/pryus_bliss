@@ -13,14 +13,60 @@
 			<% else %>
 				<li class="li_machines" >
 			<% end %>	
-				<table class="table_machines">
+				<table class="table_machines" >
 										
 					<% m.etat_machine %><% m.etat_service_machine %>
 					<tr>
 						<td>
 							<div class="infobull">
-								<%= image_tag("machine.png", :alt=> m.nom_machine ) %>
-								<p>Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
+								<% if m.etat_machine == "0" and m.etat_service_machine == "0" %>
+									<%= image_tag("machine00.png", :alt=> m.nom_machine ) %>
+									<p id="ipdescerr">
+										<%= m.incidents.last.proprietes_supplementaires %>
+										<%= m.incidents.last.description_incident %>
+										<br />
+										<%= m.incidents.last(2).first.proprietes_supplementaires %>
+										<%= m.incidents.last(2).first.description_incident %>
+										
+									</p>
+
+								<% elsif m.etat_machine == "1" and m.etat_service_machine == "0" %>
+									<%= image_tag("machine10.png", :alt=> m.nom_machine ) %>
+									<p id="ipdescerr">
+										<%= m.incidents.last.proprietes_supplementaires %>
+										<%= m.incidents.last.description_incident %>
+									</p>
+
+
+								<% elsif m.etat_machine == "0" and m.etat_service_machine == "1" %>
+									<%= image_tag("machine01.png", :alt=> m.nom_machine ) %>
+									<p id="ipdescerr">
+										<%= m.incidents.last.proprietes_supplementaires %>
+										<%= m.incidents.last.description_incident %>
+									</p>
+
+
+								<% else %>
+									<%= image_tag("machine.png", :alt=> m.nom_machine ) %> 
+									
+
+
+								<% end %>
+
+
+
+
+
+
+								
+
+
+
+
+
+
+
+								<p id="ipdesc">Ip: <%= m.ip_machine %><br />Desc: <%= m.description_machine %></p>
 							</div>
 
 						</td>

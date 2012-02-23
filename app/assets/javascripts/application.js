@@ -28,11 +28,16 @@ $(document).ready(function() {
 		active: false,
 	});
 
-	$('.table_machines').hover(function(){
-		$(this).find(".infobull p").fadeIn();
-	}, function(){
-		$(".infobull p").hide();
-	});
+	// $('.table_machines').hover(function(){
+	// 	$(this).find(".infobull #ipdesc").fadeIn();
+	// }, function(){
+	// 	$(".infobull #ipdesc").hide();
+	// });
+	// $('.table_machines').hover(function(){
+	// 	$(this).find(".infobull #ipdescerr").fadeIn();
+	// }, function(){
+	// 	$(".infobull #ipdescerr").hide();
+	// });
 
 	$( ".signed_in_li_machines" ).draggable({ 
 		containment: "#index_salles",
@@ -228,7 +233,7 @@ $(document).ready(function() {
 			}
 			else if ( value.toString() == "false" ) {
 				$.ajax({
-					url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/1/C/La_machine_est_injoignable/Ping",
+					url :"/new_incident/"+$(".salles_incident_conf #nom_de_la_machine").attr("machine")+"/1/C/Injoignable/Ping",
 					success:function(data){
 						if ( data.search(/ajaxok/i) != -1 ) {}
 						else if ( data.search(/already/i) != -1 ) {}

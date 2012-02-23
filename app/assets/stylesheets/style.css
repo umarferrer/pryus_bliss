@@ -207,11 +207,24 @@ a:visited {
 .infobull {
 	position: relative; 
 }
-.infobull p {
-	display: none;
+
+.infobull #ipdesc {
+/*	display: none;*/
 	position: absolute;
 	margin: 0px;
 	margin-top:0px;
+	margin-left:50px;
+	padding: 5px;
+	width: 200px;
+	text-align:left;
+	background: white;
+	border: 1px solid;	
+	z-index:4;
+}
+.infobull #ipdescerr {
+/*	display: none;*/
+	position: absolute;
+	margin-top:-40px;
 	margin-left:50px;
 	padding: 5px;
 	width: 200px;
@@ -371,6 +384,19 @@ a:visited {
 }
 .noborder {
 	border:0;
+}
+.infobull #infoall {
+	display: none;
+	position: absolute;
+	margin: 0px;
+	margin-top:0px;
+	margin-left:50px;
+	padding: 5px;
+	width: 200px;
+	text-align:left;
+	background: white;
+	border: 1px solid;	
+	z-index:4;
 }
 /* ****************************************************
 
