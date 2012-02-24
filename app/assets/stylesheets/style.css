@@ -504,3 +504,25 @@ a:visited {
 	color: black;
 }
 
+
+/* ****************************************************
+
+				trololo de seb
+						
+**************************************************** */
+#psg {
+	position:absolute;
+	left: 50%; 
+	top: 50%;
+	z-index: 100;
+	margin-top: -110px; 
+	margin-left: -195px;
+}
+#om{
+	position:absolute;
+	left: 50%; 
+	top: 50%;
+	z-index: 100;
+	margin-top: -110px; 
+	margin-left: -195px;
+} 
