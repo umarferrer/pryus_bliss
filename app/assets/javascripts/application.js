@@ -425,10 +425,10 @@ $(document).ready(function() {
 	$(".li_machines").dblclick(function() {		 
 		$(location).attr('href',"/machine_historique/"+$( this ).attr('id_machine') );
 	});
-	$('#table_jqueryyy').dataTable( {
+	$('#table_jqueryy').dataTable( {
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
-
+		"aaSorting": [[0,'desc']]
 	} ); 
 	
 })

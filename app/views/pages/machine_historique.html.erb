@@ -11,6 +11,7 @@
 	$(document).ready(function(){ $("#index_menu").accordion({active:<%=@active_menu%>});})
 </script> 
 
+<%= link_to image_tag("refresh.png") , "/machine_historique/#{@machine.id}", :class => "imgrefresh" %>
 <table id="index_table" >
 	<tr>
 		<td>
@@ -72,9 +73,9 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% @machine.incidents.each do |m| %>
+		<% @machine.incidents.reverse.each do |m| %>
 			<tr>
-				<td><%= m.created_at %></td>
+				<td  ><%= m.created_at %></td>
 				<td><%= m.date_resolution_incident %></td>
 				<td><% if m.statut_incident  == "1" %>
 						OK
