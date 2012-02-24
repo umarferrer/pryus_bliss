@@ -13,8 +13,10 @@ class PagesController < ApplicationController
 		@machine=Machine.find_by_id(params[:id_machine])
 		if !@machine.nil?
 			@salles=Salle.all
+            @charts = Charts.where(:idmachine => @machine.id)
 		else
-			render :inline => "pasok"
+            flash[:error]="404 => Machine"
+			redirect_to root_path
 		end
 	end
 

@@ -437,10 +437,7 @@ $(document).ready(function() {
 	$('#machinetableau').dataTable( {
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers"
-	} );
-
-
-	
+	} );	
 })
 
 

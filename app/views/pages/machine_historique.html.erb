@@ -8,9 +8,38 @@
 <% end %>
 
 <script language="Javascript"> 
-	$(document).ready(function(){ $("#index_menu").accordion({active:<%=@active_menu%>});})
-</script> 
+	$(document).ready(function(){ 
+		$("#index_menu").accordion({active:<%=@active_menu%>});
 
+		var chart1 =  new dhtmlXChart({
+			view:"line",
+			container:"chart1",
+			value:"#delay#",
+			label:"#delay#",
+			tooltip:{
+				template:"#delay#"
+			},
+			item:{
+				radius:0,
+				borderColor: "#ffffff",
+				color: "#000000"
+			},
+			line:{
+				color:"#000FFF",
+				width:3
+			},
+			yAxis:{
+				title:"Ping(ms)"
+			},
+			xAxis:{
+				title:"Nb_echantillon",
+				template:"#nb#"
+			}
+		})
+		chart1.load("/xml/<%= @machine.id %>","xml");
+
+	})
+</script> 
 <%= link_to image_tag("refresh.png") , "/machine_historique/#{@machine.id}", :class => "imgrefresh" %>
 <table id="index_table" >
 	<tr>
@@ -57,6 +86,7 @@
 					</p>
 				</div>					
 			</div>
+			<div id="chart1"></div>
 		</td>
 	</tr>
 </table>
