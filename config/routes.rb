@@ -3,7 +3,6 @@ PryusBliss::Application.routes.draw do
   root :to => 'pages#index'
   
 
-  resources :incidents
   resources :administrateurs
   resources :machines
   resources :salles
@@ -18,7 +17,7 @@ PryusBliss::Application.routes.draw do
   match '/graph/:idmachine', :to => "charts#chart"
   match '/xml/:idmachine', :to => "charts#xml"
   match '/machine_historique/:id_machine' => 'pages#machine_historique'
-  match '/incident', :to => 'pages#incidents'
+  match '/incidents', :to => 'pages#incidents'
   match '/admin', :to => 'pages#admin'
   get "sessions/new"
   match '/signout',  :to => 'sessions#destroy'

@@ -9,6 +9,7 @@
 			<ul>
 				<li><%= link_to "Mon profil", "/administrateurs/#{current_user.id}/edit" %></li>
 				<li><%= link_to "Gestion", admin_path %></li>
+				<li><%= link_to "Incidents", incidents_path %></li>
 				<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
 			</ul>
 		</div>
