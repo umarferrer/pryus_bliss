@@ -97,8 +97,8 @@ end
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render json: @machine, status: :created, location: @machine }
 		
-		@salles.nbre_machine = @salles.nbre_machine + 1
-		@salles.update_attributes(params[:nbre_machine])
+		#@salles.nbre_machine = @salles.nbre_machine + 1
+		#@salles.update_attributes(params[:nbre_machine])
       else
         format.html { render action: "new" }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
@@ -128,8 +128,8 @@ end
   def destroy
     @machine = Machine.find(params[:id])
 	@salles = Salle.find @machine.salle_id
-	@salles.nbre_machine = @salles.nbre_machine - 1
-	@salles.update_attributes(params[:nbre_machine])
+	#@salles.nbre_machine = @salles.nbre_machine - 1
+	#@salles.update_attributes(params[:nbre_machine])
     @machine.destroy
 	
     respond_to do |format|
