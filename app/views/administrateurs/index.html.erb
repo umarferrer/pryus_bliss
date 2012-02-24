@@ -1,29 +1,28 @@
 <h1>Listing administrateurs</h1>
 
-<table>
+<table id="machinetableau" >
+<thead>
   <tr>
     <th>Nom admin</th>
     <th>Prenom admin</th>
     <th>Login mail</th>
-    <th>Hached password</th>
-    <th>Salt</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @administrateurs.each do |administrateur| %>
   <tr>
     <td><%= administrateur.nom_admin %></td>
     <td><%= administrateur.prenom_admin %></td>
     <td><%= administrateur.login_mail %></td>
-    <td><%= administrateur.hached_password %></td>
-    <td><%= administrateur.salt %></td>
     <td><%= link_to 'Show', administrateur %></td>
     <td><%= link_to 'Edit', edit_administrateur_path(administrateur) %></td>
     <td><%= link_to 'Destroy', administrateur, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

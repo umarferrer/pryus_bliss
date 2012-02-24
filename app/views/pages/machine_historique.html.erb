@@ -108,9 +108,9 @@
 				<td  ><%= m.created_at %></td>
 				<td><%= m.date_resolution_incident %></td>
 				<td><% if m.statut_incident  == "1" %>
-						OK
+						<span class="green">OK</span>
 					<% elsif m.statut_incident == "0" %>
-						Erreur
+						<span class="red">Erreur</span>
 					<% end %>
 				</td>
 				<td><%= m.niveau_incident %></td>				
