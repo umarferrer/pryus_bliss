@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'builder'
 
 group :production do
-	#gem 'therubyracer-heroku'
+	gem 'therubyracer-heroku'
 	gem 'ruby-pg'
 end
 
