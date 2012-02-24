@@ -53,7 +53,7 @@ def all_ping
 			r = Random.new
 			chart = Charts.new
 			chart.idmachine = mach.id
-			chart.delay = r.rand(0..200)
+			chart.delay = r.rand(0..20)
 			chart.save!
 		else
 			mach.etat_machine=0
