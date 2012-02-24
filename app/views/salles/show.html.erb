@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset id="rolshowsal">
 <legend>
 
 
@@ -27,7 +27,7 @@
   <b><h2>la salle de machine est vide</h2></b>
 </p>
 <% else %>
-<table>
+<table >
 <tr>
 <% @machines.each do |machine| %>
 <td>
@@ -43,11 +43,6 @@
 <p>
   <b>Ip machine:</b>
   <%= machine.ip_machine %>
-</p>
-
-<p>
-  <b>Id salle machine:</b>
-  <%= machine.salle_id %>
 </p>
 
 <p>
@@ -78,6 +73,6 @@
 </tr>
 </table>
 <% end %>
-<%= link_to 'Modifier', edit_salle_path(@salle) %> |
+<%= link_to 'Modifier', edit_salle_path(@salle) %> | <%= link_to 'Ajouter machine', new_machine_path %> |
 <%= link_to 'Retour', salles_path %>
 </fieldset>

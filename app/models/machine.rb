@@ -18,5 +18,27 @@ class Machine < ActiveRecord::Base
   validates :description_machine, :presence => true
   validates :salle_id, :presence => true
   
+   #fonctions statistiques
+    def self.mtbf_machine
+      # nbre_incident = Salle.Machine.incidents.count
+      #@mtbf =
+     
+    end
+    def self.mttr_machine
+      # nb = find_by_sql("select SUM((date_resolution_incident) - ( created_at)) as ta, count(*) as na from incidents where machine_id =#{machine}") 
+      # return Time.at(nb).day
+    end
+    #maintenabilite
+    def maint_salle
+      return @fiab = 1/@mtbf.to_i
+    end
+    #disponibilite
+    def dispo_salle
+      return @dispo = @mtbf.to_i/(@mtbf.to_i + @mttr.to_i)
+    end
+    #fiabilite
+    def fiab_salle
+      return @fiab = 1/@mttr.to_i
+    end
 
 end
