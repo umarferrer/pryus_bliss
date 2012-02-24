@@ -1,4 +1,5 @@
 class JsController < ApplicationController
+    before_filter :authenticate, :only => :dbaction
 def view
     end
     def data
