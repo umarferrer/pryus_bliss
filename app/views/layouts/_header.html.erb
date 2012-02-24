@@ -7,8 +7,8 @@
 	<% if signed_in? %>
 		<div id="menu">
 			<ul>
-				<li><%= link_to "Mon profil", "#" %></li>
-				<li><%= link_to "Gestion", "#" %></li>
+				<li><%= link_to "Mon profil", "/administrateurs/#{current_user.id}/edit" %></li>
+				<li><%= link_to "Gestion", admin_path %></li>
 				<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
 			</ul>
 		</div>
@@ -16,7 +16,7 @@
 		<div id="menu">
 			<ul>
 				<li id="li_connexion" ><%= link_to "Connexion", "#" %></li>
-				<li><%= link_to "inscription", "#" %></li>
+				<li><%= link_to "inscription", "/administrateurs/new" %></li>
 			</ul>
 		</div>
 	<% end %>

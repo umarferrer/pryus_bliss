@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-    before_filter :authenticate, :only => :incidents
+    before_filter :authenticate, :only => [:incidents, :admin]
     
 	def index
 		@titre="Index"
@@ -25,6 +25,10 @@ class PagesController < ApplicationController
 
     def incidents
         @salles=Salle.all
+    end
+
+    def admin
+
     end
 
 	def view

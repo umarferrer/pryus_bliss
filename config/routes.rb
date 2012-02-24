@@ -19,6 +19,7 @@ PryusBliss::Application.routes.draw do
   match '/xml/:idmachine', :to => "charts#xml"
   match '/machine_historique/:id_machine' => 'pages#machine_historique'
   match '/incident', :to => 'pages#incidents'
+  match '/admin', :to => 'pages#admin'
   get "sessions/new"
   match '/signout',  :to => 'sessions#destroy'
   match '/signin',  :to => 'sessions#new'

@@ -455,3 +455,19 @@ a:visited {
 	margin-top:20px;
 }
 
+/* ****************************************************
+
+				pages/admin.html
+						
+**************************************************** */
+#divadmin {
+	margin: 150px auto;
+	text-align:left;
+}
+#divadmin td{
+	padding-right: 50px; 
+	padding-bottom: 10px;
+}
+#divadmin a{
+	color:black;
+}
