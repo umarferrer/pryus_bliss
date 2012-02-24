@@ -8,6 +8,6 @@ class Salle < ActiveRecord::Base
 	#vérification que 12 chiffres sont saisis
 	validates_format_of :masque_reseau , :ip_reseau, {:with =>/\d{3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/, :message => "Le format doit etre xxx xxx xxx xxx"}
  	
- 	attr_accessible :nom_salle, :masque_reseau, :ip_reseau , :id
+ 	attr_accessible :nom_salle, :masque_reseau, :ip_reseau , :id , :nbre_machine
   	attr_accessible  :id
 end

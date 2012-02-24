@@ -87,17 +87,24 @@ end
   # POST /machines.json
   def create
     @machine = Machine.new(params[:machine])
-    @salles = Salle.all
+	@salles = Salle.find(params[:machine][:salle_id])
+	@machine.etat_machine='1'
+	@machine.etat_service_machine='1'
+	
 
     respond_to do |format|
       if @machine.save
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render json: @machine, status: :created, location: @machine }
+		
+		@salles.nbre_machine = @salles.nbre_machine + 1
+		@salles.update_attributes(params[:nbre_machine])
       else
         format.html { render action: "new" }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
     end
+	
   end
 
   # PUT /machines/1
@@ -120,8 +127,11 @@ end
   # DELETE /machines/1.json
   def destroy
     @machine = Machine.find(params[:id])
+	@salles = Salle.find @machine.salle_id
+	@salles.nbre_machine = @salles.nbre_machine - 1
+	@salles.update_attributes(params[:nbre_machine])
     @machine.destroy
-
+	
     respond_to do |format|
       format.html { redirect_to machines_url }
       format.json { head :ok }

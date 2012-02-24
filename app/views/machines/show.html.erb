@@ -1,40 +1,48 @@
 <p id="notice"><%= notice %></p>
-
+<table style="border:1px solid #0b8dc1">
+<tr>
+<td style="padding-left:20px; padding-right:20px">
 <p>
-  <b>Nom machine:</b>
+  <b style="color:#0b8dc1; ">Nom machine:</b>
   <%= @machine.nom_machine %>
 </p>
 
 <p>
-  <b>Ip machine:</b>
+  <b style="color:#0b8dc1;">Ip machine:</b>
   <%= @machine.ip_machine %>
 </p>
 
 <p>
-  <b>salle :</b>
+  <b style="color:#0b8dc1;">salle :</b>
   <%= @salles.nom_salle %>
 </p>
 
 <p>
-  <b>Description machine:</b>
+  <b style="color:#0b8dc1;">Description machine:</b>
   <%= @machine.description_machine %>
 </p>
-
+</td>
+<td style="padding-left:20px; padding-right:20px">
 <p>
-  <b>Date crea machine:</b>
+  <b style="color:#0b8dc1;">Date crea machine:</b>
   <%= @machine.date_crea_machine %>
 </p>
 
 <p>
-  <b>Etat machine:</b>
-  <%= @machine.etat_machine %>
+  <b style="color:#0b8dc1;">Etat machine:</b>
+  <%= @machine.etat_machine %><%= "*" %>
 </p>
 
 <p>
-  <b>Etat service machine:</b>
-  <%= @machine.etat_service_machine %>
+  <b style="color:#0b8dc1;">Etat service machine:</b>
+  <%= @machine.etat_service_machine %><%= "*" %>
 </p>
-
-
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
-<%= link_to 'Back', machines_path %>
+</td></tr></table> <br /> <%= "* la valeure 1 correspond a OK (pas de probleme !) et 0 a KO (probleme !) " %><br />
+<br />
+<div clas="field">
+  <input class="actions" onclick="alert('Ping sur machine <%= @machine.ip_machine %>, effectue avec succes !');" type="button" value="Ping Machine" />
+  
+</div>
+<br />
+<%= link_to 'Modifier', edit_machine_path(@machine) %> |
+<%= link_to 'Retour', machines_path %>
