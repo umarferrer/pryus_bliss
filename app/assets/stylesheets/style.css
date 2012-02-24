@@ -67,11 +67,11 @@ a:visited {
 	text-decoration:none;
 	color:#fff;
 	background:url(menu_enactive.png) no-repeat bottom center;
-	padding:8px 10px;
+	padding:5px 10px;
 	width:118px;
 	text-align:center;
 	text-transform:uppercase;
-	margin-top: -7px;
+	margin-top: -5px;
 }
 #menu ul a:hover {
 	background:url(menu_over.gif) no-repeat bottom center;
