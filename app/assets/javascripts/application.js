@@ -430,6 +430,16 @@ $(document).ready(function() {
 		"sPaginationType": "full_numbers",
 		"aaSorting": [[0,'desc']]
 	} ); 
+	$('#salletableau').dataTable( {
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+	} );
+	$('#machinetableau').dataTable( {
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+	} );
+
+
 	
 })
 

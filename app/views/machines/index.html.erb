@@ -1,6 +1,7 @@
 <h1 style="color:red;">Listing machines</h1>
 <br>
-<table border="1 solid black">
+<table id="machinetableau" >
+<thead>
   <tr>
     <th> Nom machine </th>
     <th> Ip </th>
@@ -13,7 +14,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @machines.each do |machine| %>
 
   <tr>
@@ -29,6 +31,7 @@
     <td><%= link_to 'Supprimer', machine, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

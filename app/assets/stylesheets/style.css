@@ -457,7 +457,7 @@ a:visited {
 
 /* ****************************************************
 
-				pages/admin.html
+				pages/admin.html.erb
 						
 **************************************************** */
 #divadmin {
@@ -471,3 +471,30 @@ a:visited {
 #divadmin a{
 	color:black;
 }
+
+/* ****************************************************
+
+				salles/new.html.erb
+						
+**************************************************** */
+#salletableau {
+	width :100%;
+}
+#salletableau a{
+	width :100%;
+	color: black;
+}
+
+/* ****************************************************
+
+				machines/new.html.erb
+						
+**************************************************** */
+#machinetableau {
+	width :100%;
+}
+#machinetableau a{
+	width :100%;
+	color: black;
+}
+

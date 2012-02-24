@@ -2,7 +2,8 @@
 
 <% if @Salles.blank? %>
   
-<table border = 1>
+<table  id="salletableau" >
+<thead>
   <tr>
     <th>Nom salle </th>
     <th>Ip reseau </th>
@@ -12,7 +13,8 @@
     <th>Modifier</th>
     <th>Supprimer</th>
   </tr>
-
+</thead>
+<tbody>
 <% @salles.each do |salle| %>
   <tr>
     <td><%= salle.nom_salle %></td>
@@ -24,6 +26,7 @@
     <td><%= link_to 'Supprimer', salle, confirm: 'Valider la suppression?', method: :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 <%  else %>
 
